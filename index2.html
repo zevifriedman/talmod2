@@ -1,0 +1,375 @@
+<html><head><base href="https://www.gemara-ai.com/%20%D7%99%D7%A4%D7%94%20%D7%9E%D7%90%D7%95%D7%93%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A9%D7%99%D7%94%D7%99%D7%94%20%D7%99%D7%95%D7%AA%D7%A8%20%D7%9E%D7%A4%D7%95%D7%A8%D7%98%20%D7%99%D7%A4%D7%94%20%D7%95%D7%9E%D7%91%D7%95%D7%90%D7%A8%20%D7%95%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%99%D7%A4%D7%94%20%D7%95%D7%A4%D7%95%D7%A8%D7%A5%20%D7%93%D7%A8%D7%9A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>גמרא AI - ניתוח מתקדם של מסכת ברכות דף ב עמוד א</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Frank+Ruhl+Libre:wght@300;400;700&display=swap');
+    
+    :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --background-color: #f5f7fa;
+        --text-color: #34495e;
+        --highlight-color: #ffeaa7;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Heebo', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: #fff;
+        padding: 40px 0;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    h1, h2, h3 {
+        font-family: 'Frank Ruhl Libre', serif;
+    }
+    
+    h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .gemara-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    .gemara-text {
+        flex: 1;
+        min-width: 300px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        font-family: 'Frank Ruhl Libre', serif;
+        font-size: 1.2em;
+        line-height: 1.8;
+        direction: rtl;
+        transition: all 0.3s ease;
+    }
+    
+    .gemara-text:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .analysis-container {
+        flex: 2;
+        min-width: 300px;
+    }
+    
+    .analysis-box {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+    }
+    
+    .analysis-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .analysis-title {
+        font-size: 1.8em;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        border-bottom: 3px solid var(--primary-color);
+        padding-bottom: 10px;
+    }
+    
+    .highlight {
+        background-color: var(--highlight-color);
+        padding: 2px 5px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .highlight:hover {
+        background-color: #f1c40f;
+    }
+    
+    .tooltip {
+        position: absolute;
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+        max-width: 300px;
+        font-size: 0.9em;
+        transition: all 0.3s ease;
+    }
+    
+    #ai-assistant {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: var(--primary-color);
+        color: #fff;
+        padding: 15px 25px;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        font-size: 1.1em;
+        z-index: 1000;
+    }
+    
+    #ai-assistant:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    
+    .analysis-section {
+        margin-bottom: 25px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    .analysis-section:hover {
+        background: #e9ecef;
+    }
+    
+    .analysis-section h3 {
+        color: var(--secondary-color);
+        margin-bottom: 15px;
+        font-size: 1.4em;
+    }
+    
+    .analysis-section p {
+        margin-bottom: 15px;
+    }
+    
+    .analysis-section ul, .analysis-section ol {
+        padding-left: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .interactive-element {
+        background-color: #e0f7fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .interactive-element:hover {
+        background-color: #b2ebf2;
+        transform: scale(1.02);
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>גמרא AI - ניתוח מתקדם</h1>
+            <p>מסכת ברכות דף ב עמוד א - חוויה אינטראקטיבית ומעמיקה</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="gemara-container">
+            <div class="gemara-text">
+                <h2>משנה</h2>
+                <p>
+                    <span class="highlight" data-tooltip="שאלת פתיחה המגדירה את נושא הדיון: מתי מתחיל הזמן לקריאת שמע בלילה?">מאימתי קורין את שמע בערבין</span>. 
+                    <span class="highlight" data-tooltip="הגדרת זמן על פי פעולה הלכתית של הכהנים">משעה שהכהנים נכנסים לאכול בתרומתן</span> 
+                    עד סוף האשמורה הראשונה דברי ר' אליעזר. 
+                    <span class="highlight" data-tooltip="דעה שנייה במחלוקת, מרחיבה את הזמן">וחכמים אומרים עד חצות</span>. 
+                    <span class="highlight" data-tooltip="דעה שלישית, המרחיבה עוד יותר את הזמן">רבן גמליאל אומר עד שיעלה עמוד השחר</span>. 
+                    מעשה ובאו בניו מבית המשתה אמרו לו לא קרינו את שמע אמר להם אם לא עלה עמוד השחר חייבין אתם לקרות...
+                </p>
+                <h2>גמרא</h2>
+                <p>
+                    <span class="highlight" data-tooltip="הגמרא שואלת על מקור הדיון במשנה">תנא היכא קאי דקתני מאימתי</span> 
+                    ותו מאי שנא דתני בערבית ברישא לתני דשחרית ברישא 
+                    <span class="highlight" data-tooltip="הגמרא מציעה מקור מהתורה לסדר הדיון">תנא אקרא קאי דכתיב (דברים ו) בשכבך ובקומך</span> 
+                    והכי קתני זמן קריאת שמע דשכיבה אימת משעה שהכהנים נכנסין לאכול בתרומתן...
+                </p>
+            </div>
+            <div class="analysis-container">
+                <div class="analysis-box">
+                    <h3 class="analysis-title">ניתוח מבני ורעיוני מעמיק</h3>
+                    <div class="analysis-section">
+                        <h3>מבנה הסוגיה</h3>
+                        <p>הסוגיה מורכבת משני חלקים עיקריים, כל אחד מהם מכיל רבדים עמוקים של דיון:</p>
+                        <ol>
+                            <li><strong>משנה:</strong> מציגה מחלוקת משולשת בין תנאים לגבי זמן קריאת שמע של ערבית
+                                <ul>
+                                    <li>ר' אליעזר: עד סוף האשמורה הראשונה</li>
+                                    <li>חכמים: עד חצות</li>
+                                    <li>רבן גמליאל: עד עלות השחר</li>
+                                </ul>
+                            </li>
+                            <li><strong>גמרא:</strong> מנתחת את המשנה ומעלה שאלות מעמיקות
+                                <ul>
+                                    <li>מקור הדיון במשנה</li>
+                                    <li>סיבת הסדר (ערבית לפני שחרית)</li>
+                                    <li>קישור לפסוק מהתורה</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="analysis-section">
+                        <h3>נקודות מפתח לעיון מעמיק</h3>
+                        <ul>
+                            <li>השימוש בפעולות יומיומיות (אכילת תרומה) כסימן לזמנים הלכתיים</li>
+                            <li>המתח בין הגדרות זמן מדויקות לבין גמישות הלכתית</li>
+                            <li>ההשפעה של מציאות החיים (בני רבן גמליאל שחזרו מאוחר) על פסיקת ההלכה</li>
+                            <li>הקשר בין התורה שבכתב (הפסוק "בשכבך ובקומך") לתורה שבעל פה (הדיון במשנה ובגמרא)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="analysis-box">
+                    <h3 class="analysis-title">ניתוח AI מתקדם ורב-ממדי</h3>
+                    <div class="analysis-section">
+                        <h3>1. מחלוקת הלכתית וזמן: גמישות מול קשיחות</h3>
+                        <p>המחלוקת בין התנאים משקפת תפיסות שונות של זמן והלכה:</p>
+                        <ul>
+                            <li><strong>ר' אליעזר:</strong> גישה מחמירה ומדויקת, המגבילה את הזמן לתחילת הלילה</li>
+                            <li><strong>חכמים:</strong> גישה מאוזנת, מרחיבה את הזמן עד לנקודת אמצע ברורה</li>
+                            <li><strong>רבן גמליאל:</strong> גישה מקילה ומרחיבה, המאפשרת גמישות מקסימלית</li>
+                        </ul>
+                        <p><strong>ניתוח AI:</strong> מחלוקת זו מדגימה את המתח המתמיד בהלכה בין הצורך בגבולות ברורים לבין הרצון להתאים את ההלכה למציאות החיים המשתנה. היא משקפת גם גישות פילוסופיות שונות לתפיסת הזמן והלילה בהקשר הלכתי.</p>
+                    </div>
+                    <div class="analysis-section">
+                        <h3>2. הרמנויטיקה ופרשנות: מקרא להלכה</h3>
+                        <p>הגמרא מקשרת את הדיון למקור מקראי: "בשכבך ובקומך". זוהי דוגמה קלאסית למתודולוגיה הפרשנית של חז"ל.</p>
+                        <p><strong>ניתוח AI:</strong> תהליך זה מדגים:</p>
+                        <ol>
+                            <li>את הקשר העמוק בין התורה שבכתב לתורה שבעל פה</li>
+                            <li>את היכולת לגזור הלכות מעשיות מפסוקים כלליים</li>
+                            <li>את הדינמיות של ההלכה, המתפתחת תוך דיאלוג מתמיד עם הטקסט המקראי</li>
+                        </ol>
+                    </div>
+                    <div class="analysis-section">
+                        <h3>3. מטא-טקסטואליות: ניתוח הסדר והמבנה</h3>
+                        <p>הגמרא שואלת על סדר הצגת הדברים במשנה (ערבית לפני שחרית) ומקור הדיון.</p>
+                        <p><strong>ניתוח AI:</strong> שאלות אלו מעידות על:</p>
+                        <ul>
+                            <li>רגישות גבוהה למבנה ולסדר בטקסטים הלכתיים</li>
+                            <li>הבנה שלסדר ולמבנה יש משמעות מעבר לתוכן עצמו</li>
+                            <li>גישה אנליטית מתקדמת, המנתחת לא רק את התוכן אלא גם את אופן הצגתו</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="analysis-box">
+                    <h3 class="analysis-title">תובנות נוספות ורב-תחומיות</h3>
+                    <div class="analysis-section">
+                        <h3>השלכות חברתיות ותרבותיות</h3>
+                        <p>הדיון בזמני קריאת שמע חושף היבטים רחבים יותר של החברה היהודית העתיקה:</p>
+                        <ul>
+                            <li>חשיבות מדידת הזמן וחלוקתו</li>
+                            <li>השפעת מעמדות (כהנים) על קביעת זמנים הלכתיים</li>
+                            <li>האינטראקציה בין חיי היומיום (סעודות, שינה) להלכה</li>
+                        </ul>
+                        <p><strong>ניתוח AI:</strong> סוגיה זו מספקת חלון להבנת המורכבות של החיים היהודיים בתקופת חז"ל, ומדגימה כיצד ההלכה הייתה משולבת באופן אינטגרלי בחיי היומיום.</p>
+                    </div>
+                    <div class="analysis-section">
+                        <h3>התפתחות הלכתית ודינמיות</h3>
+                        <p>הסוגיה מדגימה את התהליך המורכב של התפתחות הלכתית:</p>
+                        <ol>
+                            <li>מקור מקראי: "בשכבך ובקומך"</li>
+                            <li>פרשנות ראשונית: קביעת זמנים לקריאת שמע</li>
+                            <li>מחלוקת תנאים: הרחבת והגדרת הזמנים</li>
+                            <li>דיון אמוראי: ניתוח והעמקה בשיקולים</li>
+                        </ol>
+                        <p><strong>ניתוח AI:</strong> תהליך זה מדגים את הגמישות וההתפתחות המתמדת של ההלכה היהודית, תוך שמירה על קשר למקורות. זוהי דוגמה מצוינת ל"תורה שבעל פה" כמערכת חיה ומתפתחת.</p>
+                    </div>
+                    <div class="interactive-element" id="timeline">
+                        לחץ כאן לצפייה בציר זמן אינטראקטיבי של התפתחות ההלכה
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="ai-assistant" class="pulse">שאל את ה-AI</div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Tooltip functionality
+        const highlights = document.querySelectorAll('.highlight');
+        highlights.forEach(highlight => {
+            highlight.addEventListener('mouseover', (e) => {
+                const tooltip = document.createElement('div');
+                tooltip.classList.add('tooltip');
+                tooltip.textContent = e.target.dataset.tooltip;
+                document.body.appendChild(tooltip);
+                
+                const rect = e.target.getBoundingClientRect();
+                tooltip.style.left = `${rect.left}px`;
+                tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
+            });
+            
+            highlight.addEventListener('mouseout', () => {
+                const tooltip = document.querySelector('.tooltip');
+                if (tooltip) {
+                    tooltip.remove();
+                }
+            });
+        });
+        
+        // AI Assistant functionality
+        const aiAssistant = document.getElementById('ai-assistant');
+        aiAssistant.addEventListener('click', () => {
+            alert('ברוכים הבאים למערכת ה-AI המתקדמת לניתוח גמרא! כאן תוכלו לשאול שאלות מעמיקות על הסוגיה ולקבל תשובות מפורטות. המערכת בשלבי פיתוח סופיים ותהיה זמינה בקרוב!');
+        });
+
+        // Interactive timeline
+        const timeline = document.getElementById('timeline');
+        timeline.addEventListener('click', () => {
+            alert('ציר הזמן האינטראקטיבי יציג את התפתחות ההלכה מהתורה, דרך המשנה והתלמוד, ועד לפוסקים האחרונים. תכונה זו תהיה זמינה בגרסה הבאה של המערכת!');
+        });
+    });
+    </script>
+</body></html>
