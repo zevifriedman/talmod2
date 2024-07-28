@@ -1,401 +1,541 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>פרויקט התלמוד</title>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #4a69bd;
-            --secondary-color: #1e3799;
-            --background-color: #f1f2f6;
-            --text-color: #2f3640;
-            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+<html><head><base href="https://www.gemara-ai.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>גמרא AI - חוכמת דורות במפגש עם טכנולוגיה מתקדמת</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Merriweather:wght@400;700&display=swap');
+    
+    :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --background-color: #f5f7fa;
+        --text-color: #34495e;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Heebo', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    nav {
+        background-color: rgba(255, 255, 255, 0.95);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+    }
+    
+    .logo {
+        font-family: 'Merriweather', serif;
+        font-size: 1.8em;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+    
+    .logo:hover {
+        transform: scale(1.05);
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+    
+    .nav-links li {
+        margin-right: 30px;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+    
+    header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: #fff;
+        text-align: center;
+        padding: 180px 0 120px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48ZGVmcz48cGF0dGVybiBpZD0icGF0dGVybiIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIj48cGF0aCBkPSJNMCAwIDIwIDIwTDQwIDBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2Utb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+') repeat;
+        opacity: 0.1;
+        animation: float 20s infinite alternate;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg); }
+        100% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    h1 {
+        font-family: 'Merriweather', serif;
+        font-size: 5em;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        animation: fadeInDown 1s ease-out;
+    }
+    
+    .tagline {
+        font-size: 2em;
+        font-weight: 300;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease-out 0.5s both;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-top: 80px;
+        padding: 80px 0;
+    }
+    
+    .feature {
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    
+    .feature.animate {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .feature:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    
+    .feature::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    
+    .feature:hover::before {
+        opacity: 1;
+    }
+    
+    .feature h3 {
+        color: var(--primary-color);
+        font-size: 2.2em;
+        margin-bottom: 20px;
+        position: relative;
+        font-family: 'Merriweather', serif;
+    }
+    
+    .feature p {
+        position: relative;
+        z-index: 1;
+        font-size: 1.1em;
+        line-height: 1.8;
+    }
+    
+    .cta-section {
+        background: linear-gradient(45deg, var(--accent-color), #d35400);
+        color: #fff;
+        padding: 100px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48ZGVmcz48cGF0dGVybiBpZD0icGF0dGVybiIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxIiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMiIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==') repeat;
+        opacity: 0.1;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        background-color: #fff;
+        color: var(--accent-color);
+        padding: 20px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.3em;
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+        margin-top: 30px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .cta-button:hover {
+        transform: scale(1.05) translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .cta-button::after {
+        content: "→";
+        position: absolute;
+        top: 50%;
+        left: -30px;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    
+    .cta-button:hover::after {
+        left: calc(100% + 10px);
+        opacity: 1;
+    }
+    
+    .testimonials {
+        padding: 100px 0;
+        background-color: #fff;
+    }
+    
+    .testimonial {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 60px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        background-color: #f9f9f9;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .testimonial::before {
+        content: '"';
+        position: absolute;
+        top: -20px;
+        left: 20px;
+        font-size: 150px;
+        color: var(--primary-color);
+        opacity: 0.1;
+        font-family: 'Georgia', serif;
+    }
+    
+    .testimonial-text {
+        font-size: 1.4em;
+        font-style: italic;
+        margin-bottom: 30px;
+        line-height: 1.8;
+    }
+    
+    .testimonial-author {
+        font-weight: bold;
+        color: var(--primary-color);
+        font-size: 1.2em;
+    }
+    
+    .faq-section {
+        padding: 100px 0;
+        background-color: #f0f4f8;
+    }
+    
+    .faq-item {
+        margin-bottom: 30px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .faq-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .faq-question {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.2em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .faq-question::after {
+        content: '+';
+        font-size: 1.5em;
+        transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .faq-question::after {
+        transform: rotate(45deg);
+    }
+    
+    .faq-answer {
+        background-color: #fff;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease;
+    }
+    
+    .faq-item.active .faq-answer {
+        padding: 25px;
+        max-height: 1000px;
+    }
+    
+    footer {
+        background: var(--secondary-color);
+        color: #fff;
+        text-align: center;
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48ZGVmcz48cGF0dGVybiBpZD0icGF0dGVybiIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxIiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMiIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==') repeat;
+        opacity: 0.1;
+    }
+    
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-50px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(50px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 768px) {
+        .features {
+            grid-template-columns: 1fr;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Heebo', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 800px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: var(--box-shadow);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 80%);
-            transform: rotate(45deg);
-            animation: headerAnimation 15s linear infinite;
-        }
-
-        @keyframes headerAnimation {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
+        
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+            font-size: 3.5em;
         }
-
-        .subtitle {
-            font-size: 1rem;
-            opacity: 0.8;
-            position: relative;
-            z-index: 1;
+        
+        .tagline {
+            font-size: 1.5em;
         }
-
-        .content {
-            padding: 2rem;
-        }
-
-        .file-upload {
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .file-upload-btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .file-upload-btn:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .file-upload input[type="file"] {
+        
+        .nav-links {
             display: none;
         }
-
-        .search-container {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-
-        .search-container.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .search-option {
-            margin-bottom: 1rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        input[type="text"], select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        input[type="text"]:focus, select:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(74, 105, 189, 0.3);
-        }
-
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 1rem;
-        }
-
-        button:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        #result {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            min-height: 200px;
-            border: 1px solid #ddd;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        #result.show {
-            opacity: 1;
-        }
-
-        .loading {
-            text-align: center;
-            font-style: italic;
-            color: #7f8c8d;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                width: 95%;
-            }
-
-            .content {
-                padding: 1rem;
-            }
-
-            .search-container, #result {
-                padding: 1rem;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>פרויקט התלמוד</h1>
-            <p class="subtitle">חיפוש וניווט בתלמוד הבבלי</p>
-        </header>
-        <div class="content">
-            <div class="file-upload">
-                <label for="file-input" class="file-upload-btn">בחר קובץ תלמוד</label>
-                <input type="file" id="file-input" accept=".txt">
-            </div>
-            <div class="search-container">
-                <div class="search-option">
-                    <label for="search-type">סוג חיפוש:</label>
-                    <select id="search-type">
-                        <option value="daf">חיפוש דף</option>
-                        <option value="quote">חיפוש ציטוט</option>
-                    </select>
-                </div>
-                <div id="daf-search">
-                    <div class="search-option">
-                        <label for="masechet">מסכת:</label>
-                        <input type="text" id="masechet" placeholder="הכנס שם מסכת">
-                    </div>
-                    <div class="search-option">
-                        <label for="daf">דף:</label>
-                        <input type="text" id="daf" placeholder="הכנס מספר דף">
-                    </div>
-                    <div class="search-option">
-                        <label for="amud">עמוד:</label>
-                        <select id="amud">
-                            <option value="א">א</option>
-                            <option value="ב">ב</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="quote-search" style="display: none;">
-                    <div class="search-option">
-                        <label for="quote">ציטוט:</label>
-                        <input type="text" id="quote" placeholder="הכנס ציטוט לחיפוש">
-                    </div>
-                </div>
-                <button id="search-button">חפש</button>
-            </div>
-            <div id="result"></div>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">AI גמרא</a>
+            <ul class="nav-links">
+                <li><a href="#features">תכונות</a></li>
+                <li><a href="#testimonials">המלצות</a></li>
+                <li><a href="#faq">שאלות נפוצות</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
         </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>גמרא AI</h1>
+            <p class="tagline">חוכמת דורות במפגש עם טכנולוגיה מתקדמת</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="features" class="features">
+            <div class="feature animate">
+                <h3>לימוד מותאם אישית</h3>
+                <p>חווית למידה ייחודית המותאמת לסגנון הלמידה האישי שלכם, מבוססת על ניתוח AI מתקדם המאפשר לכם להתקדם בקצב המתאים לכם ולהעמיק בנושאים שמעניינים אתכם במיוחד.</p>
+            </div>
+            <div class="feature animate">
+                <h3>שיעורים אינטראקטיביים</h3>
+                <p>צללו לעומק הגמרא עם שיעורים אינטראקטיביים מרתקים, הכוללים הסברים מעמיקים, פרשנויות מגוונות, ואפשרויות לדיון וירטואלי עם מורים ותלמידים אחרים.</p>
+            </div>
+            <div class="feature animate">
+                <h3>שאלות ותשובות בזמן אמת</h3>
+                <p>לא משנה מתי אתם לומדים, תמיד יש מישהו (או משהו) שיכול לעזור. AI מתקדם זמין 24/7 לענות על שאלותיכם ולספק הסברים מקיפים על סוגיות מורכבות בגמרא.</p>
+            </div>
+            <div class="feature animate">
+                <h3>קהילת לומדים גלובלית</h3>
+                <p>הצטרפו לקהילה תוססת של לומדי גמרא מכל רחבי העולם. שתפו תובנות, דונו בסוגיות מרתקות, והרחיבו את האופקים שלכם דרך מפגש עם נקודות מבט מגוונות ותרבויות שונות.</p>
+            </div>
+        </section>
+
+        <section id="cta" class="cta-section">
+            <div class="container">
+                <h2>גלו עולם חדש של לימוד גמרא</h2>
+                <p>הצטרפו אלינו והתחילו את המסע המרתק שלכם לעומק חוכמת הדורות</p>
+                <a href="#contact" class="cta-button">הצטרפו עכשיו</a>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-text">"גמרא AI שינתה לחלוטין את הדרך שבה אני לומד גמרא. השילוב של טכנולוגיה מתקדמת עם תוכן עשיר ומעמיק יצר חווית למידה מרתקת שלא הכרתי קודם. ההסברים הבהירים והאפשרות לשאול שאלות בכל עת הפכו את הלימוד לנגיש ומהנה יותר מאי פעם."</p>
+                <p class="testimonial-author">- הרב דוד לוי, ירושלים</p>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section">
+            <div class="faq-item">
+                <div class="faq-question">מה זה גמרא AI וכיצד זה עובד?</div>
+                <div class="faq-answer">
+                    <p>גמרא AI היא פלטפורמה מתקדמת ללימוד גמרא המשלבת טכנולוגיות בינה מלאכותית (AI) עם תוכן עשיר ומעמיק. המערכת מנתחת את סגנון הלמידה האישי שלכם ומתאימה את חווית הלימוד בהתאם, מציעה הסברים מותאמים, ומאפשרת אינטראקציה בזמן אמת עם AI מתקדם לשאלות ותשובות. בנוסף, הפלטפורמה מחברת אתכם לקהילת לומדים גלובלית, מעשירה את הלימוד עם פרספקטיבות מגוונות.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">האם גמרא AI מתאימה לכל רמות הלימוד?</div>
+                <div class="faq-answer">
+                    <p>בהחלט! גמרא AI תוכננה כדי להתאים לכל רמות הלימוד, מהמתחילים ועד למתקדמים. המערכת מזהה את רמת הידע שלכם ומתאימה את התוכן, קצב הלימוד וסגנון ההסברים בהתאם. ככל שאתם מתקדמים, כך גם רמת האתגר והעומק של החומר הנלמד, מה שמבטיח חווית למידה מתמדת ומעשירה.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">כיצד אוכל להצטרף לגמרא AI?</div>
+                <div class="faq-answer">
+                    <p>להצטרפות לגמרא AI, פשוט לחצו על כפתור "הצטרפו עכשיו" בראש העמוד. תועברו לטופס הרשמה קצר שבו תתבקשו למלא מספר פרטים בסיסיים. לאחר ההרשמה, תקבלו גישה מיידית לפלטפורמה ותוכלו להתחיל את מסע הלמידה שלכם. אנו מציעים גם תקופת ניסיון חינם, כך שתוכלו להתנסות במערכת ולהיווכח ביתרונותיה לפני שתחליטו על מנוי מלא.</p>
+                </div>
+            </div>
+        </section>
     </div>
 
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 גמרא AI. כל הזכויות שמורות.</p>
+            <p>מובילים את המהפכה בלימוד הגמרא</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
     <script>
-        const fileInput = document.getElementById('file-input');
-        const searchType = document.getElementById('search-type');
-        const dafSearch = document.getElementById('daf-search');
-        const quoteSearch = document.getElementById('quote-search');
-        const searchButton = document.getElementById('search-button');
-        const resultDiv = document.getElementById('result');
-        const searchContainer = document.querySelector('.search-container');
-
-        let talmudData = {};
-
-        fileInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const contents = e.target.result;
-                    processTalmudFile(contents);
-                    searchContainer.classList.add('show');
-                };
-                reader.readAsText(file);
-            }
-        });
-
-        function processTalmudFile(contents) {
-            const lines = contents.split('\n');
-            talmudData = {};
-            let currentMasechet = '';
-            let currentPerek = '';
-            let currentDaf = '';
-            let currentAmud = '';
-            let currentContent = '';
-
-            lines.forEach(line => {
-                if (line.startsWith('מסכת')) {
-                    const parts = line.split(' ');
-                    currentMasechet = parts[1];
-                    currentPerek = parts[3];
-                    if (!talmudData[currentMasechet]) {
-                        talmudData[currentMasechet] = {};
-                    }
-                    if (!talmudData[currentMasechet][currentPerek]) {
-                        talmudData[currentMasechet][currentPerek] = {};
-                    }
-                } else if (line.startsWith('דף')) {
-                    if (currentContent) {
-                        if (!talmudData[currentMasechet][currentPerek][currentDaf]) {
-                            talmudData[currentMasechet][currentPerek][currentDaf] = {};
-                        }
-                        talmudData[currentMasechet][currentPerek][currentDaf][currentAmud] = currentContent.trim();
-                    }
-                    const parts = line.split(' ');
-                    currentDaf = parts[1];
-                    currentAmud = parts[2];
-                    currentContent = '';
-                } else {
-                    currentContent += line + ' ';
-                }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Animate features on scroll
+            let controller = new ScrollMagic.Controller();
+            
+            document.querySelectorAll('.feature').forEach((feature, index) => {
+                new ScrollMagic.Scene({
+                    triggerElement: feature,
+                    triggerHook: 0.8,
+                    reverse: false
+                })
+                .setClassToggle(feature, 'animate')
+                .addTo(controller);
             });
+            
+            // Parallax effect for header
+            window.addEventListener('scroll', () => {
+                let scrollPosition = window.pageYOffset;
+                document.querySelector('header').style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+            });
+            
+            // Animate CTA button
+            gsap.to('.cta-button', {
+                duration: 1.5,
+                scale: 1.05,
+                yoyo: true,
+                repeat: -1,
+                ease: "power1.inOut"
+            });
+            
+            // FAQ Toggle
+            const faqItems = document.querySelectorAll('.faq-item');
 
-            if (currentContent) {
-                if (!talmudData[currentMasechet][currentPerek][currentDaf]) {
-                    talmudData[currentMasechet][currentPerek][currentDaf] = {};
-                }
-                talmudData[currentMasechet][currentPerek][currentDaf][currentAmud] = currentContent.trim();
-            }
-
-            alert('הקובץ נטען בהצלחה!');
-        }
-
-        searchType.addEventListener('change', () => {
-            if (searchType.value === 'daf') {
-                dafSearch.style.display = 'block';
-                quoteSearch.style.display = 'none';
-            } else {
-                dafSearch.style.display = 'none';
-                quoteSearch.style.display = 'block';
-            }
+            faqItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
         });
-
-        searchButton.addEventListener('click', () => {
-            if (Object.keys(talmudData).length === 0) {
-                alert('אנא טען קובץ תלמוד תחילה.');
-                return;
-            }
-            resultDiv.innerHTML = '<p class="loading">מחפש...</p>';
-            resultDiv.classList.remove('show');
-            setTimeout(() => {
-                performSearch();
-                resultDiv.classList.add('show');
-            }, 1000);
-        });
-
-        function performSearch() {
-            if (searchType.value === 'daf') {
-                const masechet = document.getElementById('masechet').value;
-                const daf = document.getElementById('daf').value;
-                const amud = document.getElementById('amud').value;
-
-                let found = false;
-                if (talmudData[masechet]) {
-                    for (const perek in talmudData[masechet]) {
-                        if (talmudData[masechet][perek][daf] && talmudData[masechet][perek][daf][amud]) {
-                            resultDiv.innerHTML = `<h2>תוצאה:</h2><p>${talmudData[masechet][perek][daf][amud]}</p>`;
-                            found = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (!found) {
-                    resultDiv.innerHTML = '<p class="loading">לא נמצאה תוצאה.</p>';
-                }
-            } else if (searchType.value === 'quote') {
-                const quote = document.getElementById('quote').value.trim();
-                let found = false;
-
-                for (const masechet in talmudData) {
-                    for (const perek in talmudData[masechet]) {
-                        for (const daf in talmudData[masechet][perek]) {
-                            for (const amud in talmudData[masechet][perek][daf]) {
-                                if (talmudData[masechet][perek][daf][amud].includes(quote)) {
-                                    resultDiv.innerHTML = `<h2>תוצאה במסכת ${masechet} פרק ${perek} דף ${daf} עמוד ${amud}:</h2><p>${talmudData[masechet][perek][daf][amud]}</p>`;
-                                    found = true;
-                                    break;
-                                }
-                            }
-                            if (found) break;
-                        }
-                        if (found) break;
-                    }
-                    if (found) break;
-                }
-
-                if (!found) {
-                    resultDiv.innerHTML = '<p class="loading">לא נמצאה תוצאה.</p>';
-                }
-            }
-        }
     </script>
-    </body>
-    </html>
+</body></html>
