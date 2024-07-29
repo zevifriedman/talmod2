@@ -335,7 +335,7 @@
         </div>
     </main>
 
-    <div id="דףבעמודב.html" class="pulse">מעבר לעמוד הבא</div>
+    <div id="ai-assistant" class="pulse">מעבר לעמוד הבא</div>
 
     <script>
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -361,10 +361,8 @@
             });
         });
         
-        // AI Assistant functionality
-        const aiAssistant = document.getElementById('ai-assistant');
-        aiAssistant.addEventListener('click', () => {
-            alert('ברוכים הבאים למערכת ה-AI המתקדמת לניתוח גמרא! כאן תוכלו לשאול שאלות מעמיקות על הסוגיה ולקבל תשובות מפורטות. המערכת בשלבי פיתוח סופיים ותהיה זמינה בקרוב!');
+         document.getElementById("ai-assistant").addEventListener("click", function() {
+            window.location.href = "דףבעמודב.html";
         });
 
         // Interactive timeline
