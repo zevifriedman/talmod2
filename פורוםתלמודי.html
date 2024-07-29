@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דיון מעמיק: "אין מערבין שמחה בשמחה"</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+        body {
+            font-family: 'Varela Round', sans-serif;
+            background: linear-gradient(45deg, #f3e7ff, #e7f0ff);
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #ffeb3b, transparent 70%);
+            opacity: 0.7;
+            animation: float 5s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        h1 {
+            text-align: center;
+            color: #4a0080;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .post {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        .post-author {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #4a0080;
+        }
+        .post-time {
+            color: #888;
+            font-size: 0.9em;
+        }
+        .post-content {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .post-source {
+            background-color: #f9f5ff;
+            border-right: 4px solid #4a0080;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+            border-radius: 0 10px 10px 0;
+        }
+        .post-question {
+            font-weight: bold;
+            color: #4a0080;
+            margin-top: 15px;
+        }
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .post-stats {
+            display: flex;
+            gap: 20px;
+        }
+        .post-stats span {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 5px;
+        }
+        .reply-btn {
+            background-color: #4a0080;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            font-size: 0.9em;
+        }
+        .reply-btn:hover {
+            background-color: #6a00b3;
+        }
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        .wisdom-box {
+            background-color: #fffaf0;
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 30px;
+            text-align: center;
+            font-style: italic;
+            color: #8b4513;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #e7f0ff;
+            color: #4a0080;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>דיון מעמיק: "אין מערבין שמחה בשמחה"</h1>
+        <div id="discussion-thread"></div>
+        <div class="wisdom-box">
+            <p>"כל המשמח חתן וכלה כאילו בנה אחת מחורבות ירושלים" - תלמוד בבלי, מסכת ברכות ו' ע"ב</p>
+        </div>
+    </div>
+
+    <script>
+        const posts = [
+            {
+                id: 1,
+                author: 'הרב יצחק כהן',
+                time: 'פורסם לפני 2 ימים',
+                content: 'שלום לכולם, אני רוצה להעלות לדיון את הסוגיה המרתקת של "אין מערבין שמחה בשמחה" המופיעה במסכת מועד קטן (ח:). הנושא הזה מעלה שאלות עמוקות על טבע השמחה ועל האופן שבו אנו חווים ומביעים אותה.',
+                source: '"אמר רב: אין נושאין נשים במועד, לא בתולות ולא אלמנות, ולא מיבמין, מפני ששמחה היא לו. ושמואל אמר: בתולות נישאות, אלמנות לא יינשאו. ושמואל לטעמיה, דאמר שמואל: מותר לארס במועד."',
+                question: 'השאלה המרכזית היא: מדוע אסור לערב שמחה בשמחה? והאם יש הבדל מהותי בין סוגי השמחות השונות?',
+                views: 245,
+                likes: 32,
+                tags: ['הלכה', 'מועדים', 'נישואין']
+            },
+            {
+                id: 2,
+                author: 'ד"ר שרה לוי',
+                time: 'פורסם לפני יום',
+                content: 'תודה על העלאת הנושא המרתק, הרב כהן. לדעתי, הרעיון מאחורי "אין מערבין שמחה בשמחה" הוא לאפשר לכל שמחה את מלוא תשומת הלב והכבוד הראויים לה. כאשר מערבבים שמחות, יש חשש שאחת תאפיל על השנייה, וכך נפספס את העומק והמשמעות הייחודיים של כל אירוע שמח. זה מזכיר לי את הרעיון של "הכרת הטוב" - היכולת להתמקד ולהוקיר כל דבר טוב בחיינו באופן מלא.',
+                views: 180,
+                likes: 28,
+                tags: ['פסיכולוגיה', 'מחשבת ישראל']
+            },
+            {
+                id: 3,
+                author: 'אברהם ישראלי',
+                time: 'פורסם לפני 12 שעות',
+                content: 'אני רוצה להוסיף נקודה מעניינת מהרמב"ם בהלכות יום טוב (פרק ז\', הלכה טז\') שמאירה את הסוגיה באור נוסף:',
+                source: '"אין נושאין נשים במועד, לא בתולות ולא אלמנות, ולא מיבמין, גזירה שמא יניח שמחת הרגל ויעסוק בשמחת אשתו"',
+                content2: 'הרמב"ם מדגיש את החשש שהאדם יתמקד בשמחה הפרטית שלו (נישואין) ויזניח את השמחה הכללית של הרגל. זה מעלה שאלה מעניינת על היחס בין שמחה אישית לשמחה קהילתית או לאומית. אולי יש כאן לקח עמוק על האיזון הנדרש בין הפרטי לכללי בחיינו?',
+                views: 95,
+                likes: 15,
+                tags: ['רמב"ם', 'פילוסופיה יהודית']
+            },
+        ];
+
+        function createPostElement(post) {
+            const postElement = document.createElement('div');
+            postElement.className = 'post';
+            postElement.innerHTML = `
+                <div class="post-header">
+                    <span class="post-author">${post.author}</span>
+                    <span class="post-time">${post.time}</span>
+                </div>
+                <div class="post-content">${post.content}</div>
+                ${post.source ? `<div class="post-source">${post.source}</div>` : ''}
+                ${post.content2 ? `<div class="post-content">${post.content2}</div>` : ''}
+                ${post.question ? `<div class="post-question">${post.question}</div>` : ''}
+                <div>
+                    ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                <div class="post-footer">
+                    <div class="post-stats">
+                        <span>
+                            <span class="emoji">👁️</span>
+                            ${post.views}
+                        </span>
+                        <span>
+                            <span class="emoji">👍</span>
+                            ${post.likes}
+                        </span>
+                    </div>
+                    <button class="reply-btn">
+                        <span class="emoji">💬</span>
+                        תגובה
+                    </button>
+                </div>
+            `;
+            return postElement;
+        }
+
+        function renderDiscussionThread() {
+            const threadContainer = document.getElementById('discussion-thread');
+            posts.forEach(post => {
+                const postElement = createPostElement(post);
+                threadContainer.appendChild(postElement);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', renderDiscussionThread);
+    </script>
+</body>
+</html>
