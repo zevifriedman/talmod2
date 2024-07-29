@@ -260,48 +260,63 @@
         left: calc(100% + 10px);
         opacity: 1;
     }
-    
     .testimonials {
-        padding: 100px 0;
-        background-color: #fff;
+    padding: 100px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.testimonial-wrapper {
+    display: flex;
+    width: 400%; /* 4 testimonials, each taking 25% of the width */
+    animation: scroll 60s linear infinite;
+}
+
+.testimonial {
+    flex: 1 0 25%;
+    text-align: center;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    background-color: #f9f9f9;
+    position: relative;
+    overflow: hidden;
+    margin: 0 10px; /* Adjust the spacing between testimonials */
+}
+
+.testimonial::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 150px;
+    color: var(--primary-color);
+    opacity: 0.1;
+    font-family: 'Georgia', serif;
+}
+
+.testimonial-text {
+    font-size: 1.4em;
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
     }
-    
-    .testimonial {
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 60px;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        background-color: #f9f9f9;
-        position: relative;
-        overflow: hidden;
+    100% {
+        transform: translateX(-100%);
     }
-    
-    .testimonial::before {
-        content: '"';
-        position: absolute;
-        top: -20px;
-        left: 20px;
-        font-size: 150px;
-        color: var(--primary-color);
-        opacity: 0.1;
-        font-family: 'Georgia', serif;
-    }
-    
-    .testimonial-text {
-        font-size: 1.4em;
-        font-style: italic;
-        margin-bottom: 30px;
-        line-height: 1.8;
-    }
-    
-    .testimonial-author {
-        font-weight: bold;
-        color: var(--primary-color);
-        font-size: 1.2em;
-    }
-    
+}
+
     .faq-section {
         padding: 100px 0;
         background-color: #f0f4f8;
@@ -537,13 +552,27 @@
     </div>
 </section>
 
+<section id="testimonials" class="testimonials">
+    <div class="testimonial-wrapper">
+        <div class="testimonial">
+            <p class="testimonial-text">"גמרא AI שינתה לחלוטין את הדרך שבה אני לומד גמרא. השילוב של טכנולוגיה מתקדמת עם תוכן עשיר ומעמיק יצר חווית למידה מרתקת שלא הכרתי קודם. ההסברים הבהירים והאפשרות לשאול שאלות בכל עת הפכו את הלימוד לנגיש ומהנה יותר מאי פעם."</p>
+            <p class="testimonial-author">- הרב דוד לוי, ירושלים</p>
+        </div>
+        <div class="testimonial">
+            <p class="testimonial-text">"אני משתמש בגמרא AI כדי לשפר את הלמידה שלי. התכנים המועשרים והאפשרויות השונות לשאול שאלות עוזרים לי להבין את החומר בצורה הרבה יותר טובה. מומלץ בחום לכל תלמיד גמרא."</p>
+            <p class="testimonial-author">- יוסי כהן, תל אביב</p>
+        </div>
+        <div class="testimonial">
+            <p class="testimonial-text">"העבודה עם גמרא AI הייתה חווית למידה יוצאת דופן. התשובות לשאלות שלי היו תמיד מדויקות והמערכת מבינה את הצרכים שלי בצורה מעולה. אני מרוצה מאוד."</p>
+            <p class="testimonial-author">- מיכל אברהם, חיפה</p>
+        </div>
+        <div class="testimonial">
+            <p class="testimonial-text">"היכולות של גמרא AI הן פשוט מדהימות. זהו כלי עזר נהדר לתלמידים שמחפשים להבין את גמרא בצורה מעמיקה ומתקדמת. אני מאוד מרוצה מהשירות."</p>
+            <p class="testimonial-author">- יעקב רוזנברג, בני ברק</p>
+        </div>
+    </div>
+</section>
 
-        <section id="testimonials" class="testimonials">
-            <div class="testimonial">
-                <p class="testimonial-text">"גמרא AI שינתה לחלוטין את הדרך שבה אני לומד גמרא. השילוב של טכנולוגיה מתקדמת עם תוכן עשיר ומעמיק יצר חווית למידה מרתקת שלא הכרתי קודם. ההסברים הבהירים והאפשרות לשאול שאלות בכל עת הפכו את הלימוד לנגיש ומהנה יותר מאי פעם."</p>
-                <p class="testimonial-author">- הרב דוד לוי, ירושלים</p>
-            </div>
-        </section>
 
         <section id="faq" class="faq-section">
             <div class="faq-item">
