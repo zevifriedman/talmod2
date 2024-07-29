@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8">
+<title>הפורום הגלובלי של גמרא AI - דיונים</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+
+    :root {
+        --primary-color: #4a0080;
+        --secondary-color: #6a00b3;
+        --background-color: #f0e6ff;
+        --text-color: #333;
+        --border-color: #d1c4e9;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Heebo', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        direction: rtl;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+        margin-bottom: 20px;
+    }
+
+    nav {
+        margin-top: 20px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: bold;
+    }
+
+    .discussion-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .discussion-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .discussion-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .discussion-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .discussion-meta {
+        font-size: 0.9em;
+        color: #777;
+        margin-bottom: 10px;
+    }
+
+    .discussion-excerpt {
+        margin-bottom: 15px;
+    }
+
+    .tag {
+        display: inline-block;
+        background-color: #e7f0ff;
+        color: var(--primary-color);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: var(--secondary-color);
+    }
+
+    .search-bar {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .search-bar input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px 0 0 5px;
+    }
+
+    .search-bar button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>הפורום הגלובלי של גמרא AI</h1>
+            <nav>
+                <a href="/home">דף הבית</a>
+                <a href="/discussions">דיונים</a>
+                <a href="/members">חברים</a>
+                <a href="/ai-insights">תובנות AI</a>
+                <a href="/about">אודות</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>דיונים פעילים</h2>
+
+        <div class="search-bar">
+            <input type="text" placeholder="חפש דיונים...">
+            <button>חפש</button>
+        </div>
+
+        <div class="discussion-list">
+            <div class="discussion-card">
+                <div class="discussion-title">אין מערבין שמחה בשמחה</div>
+                <div class="discussion-meta">נפתח ע"י הרב יצחק כהן | לפני 3 ימים | 24 תגובות</div>
+                <div class="discussion-excerpt">דיון מעמיק בסוגיית "אין מערבין שמחה בשמחה" והשלכותיה על חיי היומיום.</div>
+                <div>
+                    <span class="tag">הלכה</span>
+                    <span class="tag">מועדים</span>
+                    <span class="tag">נישואין</span>
+                </div>
+                <a href="/discussions/1" class="btn">הצטרף לדיון</a>
+            </div>
+
+            <div class="discussion-card">
+                <div class="discussion-title">גדר מלאכת מחשבת בשבת</div>
+                <div class="discussion-meta">נפתח ע"י ד"ר שרה לוי | לפני שבוע | 37 תגובות</div>
+                <div class="discussion-excerpt">ניתוח מעמיק של המושג "מלאכת מחשבת" בהלכות שבת והשלכותיו על טכנולוגיה מודרנית.</div>
+                <div>
+                    <span class="tag">שבת</span>
+                    <span class="tag">מלאכות</span>
+                    <span class="tag">טכנולוגיה</span>
+                </div>
+                <a href="/discussions/2" class="btn">הצטרף לדיון</a>
+            </div>
+
+            <div class="discussion-card">
+                <div class="discussion-title">השפעת AI על לימוד התורה</div>
+                <div class="discussion-meta">נפתח ע"י אברהם ישראלי | לפני 5 ימים | 52 תגובות</div>
+                <div class="discussion-excerpt">דיון על ההשלכות האתיות והמעשיות של שימוש ב-AI בלימוד ופסיקת הלכה.</div>
+                <div>
+                    <span class="tag">AI</span>
+                    <span class="tag">טכנולוגיה</span>
+                    <span class="tag">לימוד תורה</span>
+                </div>
+                <a href="/discussions/3" class="btn">הצטרף לדיון</a>
+            </div>
+
+            <div class="discussion-card">
+                <div class="discussion-title">גדרי פיקוח נפש בעידן הקורונה</div>
+                <div class="discussion-meta">נפתח ע"י רחל גולדברג | לפני 2 שבועות | 89 תגובות</div>
+                <div class="discussion-excerpt">בחינה מחודשת של גדרי פיקוח נפש לאור אתגרי מגפת הקורונה והשלכותיה.</div>
+                <div>
+                    <span class="tag">פיקוח נפש</span>
+                    <span class="tag">רפואה</span>
+                    <span class="tag">קורונה</span>
+                </div>
+                <a href="/discussions/4" class="btn">הצטרף לדיון</a>
+            </div>
+
+            <div class="discussion-card">
+                <div class="discussion-title">מעמד ההלכה בעולם פוסט-מודרני</div>
+                <div class="discussion-meta">נפתח ע"י דוד שפירא | לפני 10 ימים | 41 תגובות</div>
+                <div class="discussion-excerpt">דיון פילוסופי על מקומה של ההלכה בעולם משתנה ואתגרי הפוסט-מודרניזם.</div>
+                <div>
+                    <span class="tag">פילוסופיה</span>
+                    <span class="tag">מודרניות</span>
+                    <span class="tag">הלכה</span>
+                </div>
+                <a href="/discussions/5" class="btn">הצטרף לדיון</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Here you could add JavaScript for dynamic search functionality,
+        // loading more discussions, etc.
+    </script>
+</body></html>
