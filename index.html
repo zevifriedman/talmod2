@@ -402,9 +402,44 @@
             display: none;
         }
     }
+
+
+     body {
+            font-family: 'Heebo', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #intro-image {
+            position: absolute;
+            width: 300px;
+            height: auto;
+            opacity: 1;
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+
+
+
+    
 </style>
 </head>
 <body>
+
+
+
+  <img id="intro-image" src="blob:https://imgur.com/5f0643cb-7e88-4603-9f1a-3a798768e0d5" alt="תמונה יפה ללא רקע">
+
+    
     <nav>
         <div class="container">
             <a href="/" class="logo">AI גמרא</a>
@@ -539,6 +574,13 @@
                     });
                 });
             });
+        });
+    </script>
+       <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.getElementById("intro-image").classList.add("fade-out");
+            }, 5000); // 5000 milliseconds = 5 seconds
         });
     </script>
 </body></html>
