@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>חידושי גמרא - עולם של חכמה ותובנות</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;700&family=Rubik:wght@300;400;700&display=swap');
+
+  :root {
+    --primary-color: #2980b9;
+    --secondary-color: #34495e;
+    --accent-color: #e67e22;
+    --background-color: #f3f4f6;
+    --text-color: #2c3e50;
+    --card-background: #ffffff;
+  }
+
+  body {
+    font-family: 'Rubik', 'Noto Serif Hebrew', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    direction: rtl;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    text-align: center;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255,255,255,0.1) 10px,
+      rgba(255,255,255,0.1) 20px
+    );
+    animation: move-background 20s linear infinite;
+  }
+
+  @keyframes move-background {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(50%, 50%);
+    }
+  }
+
+  h1 {
+    font-family: 'Noto Serif Hebrew', serif;
+    font-size: 3.5em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+  }
+
+  .subtitle {
+    font-size: 1.4em;
+    font-weight: 300;
+    margin-top: 0.5rem;
+    position: relative;
+  }
+
+  .hiddush-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .hiddush {
+    background-color: var(--card-background);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .hiddush:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+
+  .hiddush::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  }
+
+  .hiddush-header {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 1.5rem;
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  .hiddush-content {
+    padding: 2rem;
+  }
+
+  .hiddush-title {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 1rem;
+    font-family: 'Noto Serif Hebrew', serif;
+  }
+
+  .hiddush-text {
+    margin-bottom: 1.5rem;
+    font-size: 1.1em;
+  }
+
+  .hiddush-source {
+    font-style: italic;
+    color: #7f8c8d;
+    text-align: left;
+    font-size: 0.9em;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+  }
+
+  .new-hiddush-form {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .new-hiddush-form h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-family: 'Noto Serif Hebrew', serif;
+    font-size: 2em;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+
+  .submit-btn {
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .submit-btn:hover {
+    background-color: #d35400;
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .new-hiddush {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .floating-add-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--accent-color);
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .floating-add-btn:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  }
+
+  #confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .filter-bar {
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .filter-input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+
+  .filter-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    background-color: #2c3e50;
+  }
+</style>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+  
+  <header>
+    <h1>חידושי גמרא</h1>
+    <p class="subtitle">עולם של חכמה, תובנות והארות חדשות</p>
+  </header>
+
+  <div class="container">
+    <div class="filter-bar">
+      <input type="text" id="filter-input" class="filter-input" placeholder="חפש חידושים...">
+      <button id="filter-btn" class="filter-btn">סנן</button>
+    </div>
+
+    <div id="hiddushim-feed" class="hiddush-grid"></div>
+  </div>
+
+  <div class="floating-add-btn" onclick="toggleForm()">+</div>
+
+  <div class="new-hiddush-form" id="new-hiddush-form" style="display: none;">
+    <h2>הוסף חידוש משלך</h2>
+    <form id="hiddush-form">
+      <div class="form-group">
+        <label for="title">כותרת החידוש:</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="content">תוכן החידוש:</label>
+        <textarea id="content" name="content" rows="4" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="source">מקור:</label>
+        <input type="text" id="source" name="source" required>
+      </div>
+      <button type="submit" class="submit-btn">הוסף חידוש</button>
+    </form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    const hiddushimFeed = document.getElementById('hiddushim-feed');
+    const newHiddushForm = document.getElementById('new-hiddush-form');
+    const filterInput = document.getElementById('filter-input');
+    const filterBtn = document.getElementById('filter-btn');
+    let hiddushim = [
+      {
+        title: "הבנה מחודשת ב'אדם מועד לעולם'",
+        content: "בסוגיית 'אדם מועד לעולם' (בבא קמא כו.), ניתן להציע שהכלל אינו רק קביעה משפטית, אלא גם אמירה פילוסופית על אחריות האדם. לפי זה, האדם נדרש תמיד להיות ער למעשיו ולהשלכותיהם, וזוהי משמעות היותו 'מועד לעולם'.",
+        source: "הרב אהרן ליכטנשטיין"
+      },
+      {
+        title: "פרשנות חדשה ל'זה וזה גורם'",
+        content: "בסוגיית 'זה וזה גורם' (עבודה זרה מט.), ניתן להציע שהמחלוקת אינה רק בשאלה האם מותר או אסור, אלא בהבנת מהות הבעלות והשפעה. השאלה היא האם ניתן לפצל את ה'גורמים' או שמא יש לראותם כיחידה אחת בלתי ניתנת להפרדה.",
+        source: "הרב שלמה פישר"
+      },
+      {
+        title: "תובנה מפתיעה ב'דבר שיש לו מתירין'",
+        content: "בסוגיית 'דבר שיש לו מתירין' (ביצה ג:), אפשר להציע שהעיקרון אינו רק כלל הלכתי, אלא גם הנחיה מוסרית. הרעיון הוא שכאשר יש אפשרות להגיע למצב של היתר, עלינו להעדיף זאת על פני הסתמכות על ביטול או היתרים אחרים.",
+        source: "הרב יהודה עמיטל"
+      }
+    ];
+
+    function addHiddush(hiddush) {
+      const hiddushElement = document.createElement('div');
+      hiddushElement.className = 'hiddush new-hiddush';
+      hiddushElement.innerHTML = `
+        <div class="hiddush-header">חידוש גמרא</div>
+        <div class="hiddush-content">
+          <h3 class="hiddush-title">${hiddush.title}</h3>
+          <p class="hiddush-text">${hiddush.content}</p>
+          <p class="hiddush-source">מקור: ${hiddush.source}</p>
+        </div>
+      `;
+      hiddushimFeed.insertBefore(hiddushElement, hiddushimFeed.firstChild);
+      runConfetti();
+    }
+
+    function loadInitialHiddushim() {
+      hiddushim.forEach(hiddush => addHiddush(hiddush));
+    }
+
+    function toggleForm() {
+      newHiddushForm.style.display = newHiddushForm.style.display === 'none' ? 'block' : 'none';
+    }
+
+    document.getElementById('hiddush-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newHiddush = {
+        title: document.getElementById('title').value,
+        content: document.getElementById('content').value,
+        source: document.getElementById('source').value
+      };
+      addHiddush(newHiddush);
+      hiddushim.unshift(newHiddush);
+      this.reset();
+      toggleForm();
+    });
+
+    function runConfetti() {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function fetchNewHiddush() {
+      const randomTitles = [
+        "גילוי מרתק בסוגיית 'קים ליה בדרבה מיניה'",
+        "פרשנות מהפכנית ל'מיגו דהעזה'",
+        "הארה חדשה ב'אין שליח לדבר עבירה'"
+      ];
+      const randomContents = [
+        "בחקירה מעמיקה של הסוגיה, עולה אפשרות שהכלל 'קים ליה בדרבה מיניה' אינו רק עיקרון משפטי, אלא גם תפיסה מוסרית על היחס בין עבירות שונות ומשמעותן.",
+        "הצעה חדשנית מעלה כי 'מיגו דהעזה' אינו רק כלי ראייתי, אלא משקף תפיסה עמוקה יותר של אמינות ואומץ בהקשר של עדות והתנהגות אנושית.",
+        "ניתוח מחודש של הכלל 'אין שליח לדבר עבירה' מציע כי זוהי לא רק קביעה הלכתית, אלא גם אמירה עמוקה על אחריות אישית ובחירה חופשית."
+      ];
+      const randomSources = ["הרב אשר וייס", "הרב יעקב אריאל", "הרב דוד סתיו"];
+      
+      const randomHiddush = {
+        title: randomTitles[Math.floor(Math.random() * randomTitles.length)],
+        content: randomContents[Math.floor(Math.random() * randomContents.length)],
+        source: randomSources[Math.floor(Math.random() * randomSources.length)]
+      };
+      addHiddush(randomHiddush);
+      hiddushim.unshift(randomHiddush);
+    }
+
+    filterBtn.addEventListener('click', function() {
+      const filterText = filterInput.value.toLowerCase();
+      const filteredHiddushim = hiddushim.filter(hiddush => 
+        hiddush.title.toLowerCase().includes(filterText) ||
+        hiddush.content.toLowerCase().includes(filterText) ||
+        hiddush.source.toLowerCase().includes(filterText)
+      );
+      hiddushimFeed.innerHTML = '';
+      filteredHiddushim.forEach(hiddush => addHiddush(hiddush));
+    });
+
+    loadInitialHiddushim();
+    setInterval(fetchNewHiddush, 60000); // Fetch new hiddush every minute
+
+    // Add the hiddush from the URL parameters if present
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlTitle = urlParams.get('title');
+    const urlContent = urlParams.get('content');
+    const urlSource = urlParams.get('source');
+    if (urlTitle && urlContent && urlSource) {
+      const newHiddush = {
+        title: decodeURIComponent(urlTitle),
+        content: decodeURIComponent(urlContent),
+        source: decodeURIComponent(urlSource)
+      };
+      addHiddush(newHiddush);
+      hiddushim.unshift(newHiddush);
+    }
+  </script>
+</body>
+</html>
