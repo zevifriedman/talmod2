@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8">
+<title>הפורום הגלובלי של גמרא AI - תובנות AI</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+
+    :root {
+        --primary-color: #4a0080;
+        --secondary-color: #6a00b3;
+        --background-color: #f0e6ff;
+        --text-color: #333;
+        --border-color: #d1c4e9;
+        --ai-color: #00a86b;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Heebo', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        direction: rtl;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+        margin-bottom: 20px;
+    }
+
+    nav {
+        margin-top: 20px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: bold;
+    }
+
+    .insights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .insight-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .insight-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .insight-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+    }
+
+    .insight-meta {
+        font-size: 0.9em;
+        color: #777;
+        margin-bottom: 10px;
+    }
+
+    .insight-content {
+        margin-bottom: 15px;
+    }
+
+    .ai-badge {
+        display: inline-block;
+        background-color: var(--ai-color);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        margin-bottom: 10px;
+    }
+
+    .tag {
+        display: inline-block;
+        background-color: #e7f0ff;
+        color: var(--primary-color);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: var(--secondary-color);
+    }
+
+    .search-bar {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .search-bar input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px 0 0 5px;
+    }
+
+    .search-bar button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>הפורום הגלובלי של גמרא AI</h1>
+            <nav>
+                <a href="/home">דף הבית</a>
+                <a href="פורוםדיונים.html">דיונים</a>
+                <a href="פורום חברים.html">חברים</a>
+                <a href="/ai-insights">תובנות AI</a>
+                <a href="/about">אודות</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>תובנות AI</h2>
+
+        <div class="search-bar">
+            <input type="text" placeholder="חפש תובנות AI...">
+            <button>חפש</button>
+        </div>
+
+        <div class="insights-grid">
+            <div class="insight-card">
+                <span class="ai-badge">תובנת AI</span>
+                <div class="insight-title">ניתוח מקיף של מושג "אין מערבין שמחה בשמחה"</div>
+                <div class="insight-meta">נוצר ע"י AI גמרא | לפני 2 ימים</div>
+                <div class="insight-content">
+                    לאחר ניתוח של 1,000 מקורות הלכתיים, AI זיהה 7 גישות עיקריות להבנת המושג. הניתוח מצביע על קשר מעניין בין פרשנויות מודרניות לבין מקורות קדומים שלא נחקרו בהרחבה.
+                </div>
+                <div>
+                    <span class="tag">הלכה</span>
+                    <span class="tag">מועדים</span>
+                    <span class="tag">ניתוח טקסט</span>
+                </div>
+                <a href="/ai-insights/1" class="btn">קרא עוד</a>
+            </div>
+
+            <div class="insight-card">
+                <span class="ai-badge">תובנת AI</span>
+                <div class="insight-title">מיפוי השפעות טכנולוגיות על הלכות שבת</div>
+                <div class="insight-meta">נוצר ע"י AI גמרא | לפני שבוע</div>
+                <div class="insight-content">
+                    AI יצר מודל המקשר בין 39 אבות מלאכה לבין 150 טכנולוגיות מודרניות. המודל מציע תובנות חדשות לגבי אופן יישום ההלכה בעידן הדיגיטלי.
+                </div>
+                <div>
+                    <span class="tag">שבת</span>
+                    <span class="tag">טכנולוגיה</span>
+                    <span class="tag">מיפוי נתונים</span>
+                </div>
+                <a href="/ai-insights/2" class="btn">קרא עוד</a>
+            </div>
+
+            <div class="insight-card">
+                <span class="ai-badge">תובנת AI</span>
+                <div class="insight-title">ניתוח סמנטי של מחלוקות בין בית שמאי לבית הלל</div>
+                <div class="insight-meta">נוצר ע"י AI גמרא | לפני 3 ימים</div>
+                <div class="insight-content">
+                    באמצעות ניתוח סמנטי מתקדם, AI זיהה דפוסים לשוניים ורעיוניים במחלוקות בין בית שמאי לבית הלל. הניתוח מציע הסבר חדש למקורות המחלוקת ולהשפעתה על ההלכה.
+                </div>
+                <div>
+                    <span class="tag">מחלוקות</span>
+                    <span class="tag">ניתוח לשוני</span>
+                    <span class="tag">בית שמאי ובית הלל</span>
+                </div>
+                <a href="/ai-insights/3" class="btn">קרא עוד</a>
+            </div>
+
+            <div class="insight-card">
+                <span class="ai-badge">תובנת AI</span>
+                <div class="insight-title">מודל חיזוי להתפתחות הלכתית בעידן הגנטיקה</div>
+                <div class="insight-meta">נוצר ע"י AI גמרא | לפני 5 ימים</div>
+                <div class="insight-content">
+                    AI פיתח מודל המנבא כיצד התקדמות בתחום הגנטיקה עשויה להשפיע על פסיקות הלכתיות בנושאי יוחסין, פוריות, ורפואה. המודל מציע תרחישים אפשריים לדיון הלכתי עתידי.
+                </div>
+                <div>
+                    <span class="tag">גנטיקה</span>
+                    <span class="tag">הלכה ורפואה</span>
+                    <span class="tag">חיזוי</span>
+                </div>
+                <a href="/ai-insights/4" class="btn">קרא עוד</a>
+            </div>
+
+            <div class="insight-card">
+                <span class="ai-badge">תובנת AI</span>
+                <div class="insight-title">זיהוי מגמות בשאלות הלכתיות מודרניות</div>
+                <div class="insight-meta">נוצר ע"י AI גמרא | לפני 4 ימים</div>
+                <div class="insight-content">
+                    ניתוח של 100,000 שאלות הלכתיות שנשאלו ברשת בעשור האחרון חשף מגמות מעניינות. AI זיהה קשרים בין אירועים גלובליים לבין סוגי השאלות הנשאלות, ומציע תחזית לנושאים שיעסיקו את עולם ההלכה בשנים הקרובות.
+                </div>
+                <div>
+                    <span class="tag">מגמות</span>
+                    <span class="tag">שאלות ותשובות</span>
+                    <span class="tag">ניתוח נתונים</span>
+                </div>
+                <a href="/ai-insights/5" class="btn">קרא עוד</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // כאן ניתן להוסיף JavaScript לחיפוש דינמי,
+        // טעינת תובנות נוספות, וכדומה.
+    </script>
+</body></html>
