@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8">
+<title>הפורום הגלובלי של גמרא AI - חברים</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+
+    :root {
+        --primary-color: #4a0080;
+        --secondary-color: #6a00b3;
+        --background-color: #f0e6ff;
+        --text-color: #333;
+        --border-color: #d1c4e9;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Heebo', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        direction: rtl;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+        margin-bottom: 20px;
+    }
+
+    nav {
+        margin-top: 20px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: bold;
+    }
+
+    .members-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .member-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        text-align: center;
+    }
+
+    .member-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .member-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 15px;
+        object-fit: cover;
+    }
+
+    .member-name {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .member-title {
+        color: #777;
+        margin-bottom: 10px;
+    }
+
+    .member-bio {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+
+    .member-stats {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .stat {
+        text-align: center;
+    }
+
+    .stat-value {
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: var(--secondary-color);
+    }
+
+    .search-bar {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .search-bar input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px 0 0 5px;
+    }
+
+    .search-bar button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>הפורום הגלובלי של גמרא AI</h1>
+            <nav>
+                <a href="/home">דף הבית</a>
+                <a href="פורוםדיונים.html">דיונים</a>
+                <a href="/members">חברים</a>
+                <a href="/ai-insights">תובנות AI</a>
+                <a href="/about">אודות</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>חברי הפורום</h2>
+
+        <div class="search-bar">
+            <input type="text" placeholder="חפש חברים...">
+            <button>חפש</button>
+        </div>
+
+        <div class="members-grid">
+            <div class="member-card">
+                <img src="https://websim.example.com/avatars/rabbi_cohen.jpg" alt="הרב יצחק כהן" class="member-avatar">
+                <div class="member-name">הרב יצחק כהן</div>
+                <div class="member-title">ראש ישיבה ופוסק הלכה</div>
+                <div class="member-bio">מומחה בהלכות שבת ומועדים, חוקר השפעות הטכנולוגיה על ההלכה.</div>
+                <div class="member-stats">
+                    <div class="stat">
+                        <div class="stat-value">120</div>
+                        <div>דיונים</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">1.5K</div>
+                        <div>תגובות</div>
+                    </div>
+                </div>
+                <a href="/members/rabbi-cohen" class="btn">צפה בפרופיל</a>
+            </div>
+
+            <div class="member-card">
+                <img src="https://websim.example.com/avatars/dr_levy.jpg" alt="ד״ר שרה לוי" class="member-avatar">
+                <div class="member-name">ד״ר שרה לוי</div>
+                <div class="member-title">חוקרת בכירה במדעי המוח</div>
+                <div class="member-bio">משלבת בין מחקר מדעי לתובנות תלמודיות, מתמחה בנושאי אתיקה רפואית.</div>
+                <div class="member-stats">
+                    <div class="stat">
+                        <div class="stat-value">85</div>
+                        <div>דיונים</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">980</div>
+                        <div>תגובות</div>
+                    </div>
+                </div>
+                <a href="/members/dr-levy" class="btn">צפה בפרופיל</a>
+            </div>
+
+            <div class="member-card">
+                <img src="https://websim.example.com/avatars/avraham_israeli.jpg" alt="אברהם ישראלי" class="member-avatar">
+                <div class="member-name">אברהם ישראלי</div>
+                <div class="member-title">מהנדס תוכנה ותלמיד חכם</div>
+                <div class="member-bio">מפתח אפליקציות AI ללימוד תורה, מתמחה בשילוב טכנולוגיה בעולם היהדות.</div>
+                <div class="member-stats">
+                    <div class="stat">
+                        <div class="stat-value">62</div>
+                        <div>דיונים</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">750</div>
+                        <div>תגובות</div>
+                    </div>
+                </div>
+                <a href="/members/avraham-israeli" class="btn">צפה בפרופיל</a>
+            </div>
+
+            <div class="member-card">
+                <img src="https://websim.example.com/avatars/rachel_goldberg.jpg" alt="רחל גולדברג" class="member-avatar">
+                <div class="member-name">רחל גולדברג</div>
+                <div class="member-title">עורכת דין ויועצת הלכתית</div>
+                <div class="member-bio">מתמחה בגישור בין החוק האזרחי להלכה, פעילה בקידום זכויות נשים בהלכה.</div>
+                <div class="member-stats">
+                    <div class="stat">
+                        <div class="stat-value">95</div>
+                        <div>דיונים</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">1.2K</div>
+                        <div>תגובות</div>
+                    </div>
+                </div>
+                <a href="/members/rachel-goldberg" class="btn">צפה בפרופיל</a>
+            </div>
+
+            <div class="member-card">
+                <img src="https://websim.example.com/avatars/david_shapira.jpg" alt="דוד שפירא" class="member-avatar">
+                <div class="member-name">דוד שפירא</div>
+                <div class="member-title">פילוסוף יהודי ומרצה</div>
+                <div class="member-bio">חוקר את הממשק בין פילוסופיה מערבית למחשבת ישראל, מתמחה בהגות הרמב"ם.</div>
+                <div class="member-stats">
+                    <div class="stat">
+                        <div class="stat-value">78</div>
+                        <div>דיונים</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">890</div>
+                        <div>תגובות</div>
+                    </div>
+                </div>
+                <a href="/members/david-shapira" class="btn">צפה בפרופיל</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Here you could add JavaScript for dynamic search functionality,
+        // loading more members, etc.
+    </script>
+</body></html>
