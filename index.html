@@ -6,7 +6,53 @@
 <title>גמרא AI - חוכמת דורות במפגש עם טכנולוגיה מתקדמת</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Merriweather:wght@400;700&display=swap');
-    
+  
+    header {
+    position: relative;
+    background-color: #f5f5f5; /* Adjust as needed */
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+}
+
+.scrolling-quotes {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #e0e0e0; /* Background color for the scrolling area */
+    padding: 10px 0;
+    overflow: hidden;
+    border-top: 2px solid #ddd; /* Optional: Add a border to separate from the main content */
+}
+
+.quote-wrapper {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+}
+
+.quote {
+    padding: 0 30px;
+    font-size: 1.2em;
+    font-style: italic;
+    color: #333;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+
+
     :root {
         --primary-color: #4a90e2;
         --secondary-color: #2c3e50;
@@ -453,7 +499,7 @@
 
 
     .cta-section1 {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    background: linear-gradient(135deg, #4a90e2 0%, #2c3e50 100%);
     color: white;
     padding: 60px 20px;
     text-align: center;
@@ -503,14 +549,25 @@
             </ul>
         </div>
     </nav>
-
     <header>
         <div class="container">
             <h1>AI גמרא</h1>
             <p class="tagline">חוכמת דורות במפגש עם טכנולוגיה מתקדמת</p>
+            <div class="scrolling-quotes">
+                <div class="quote-wrapper">
+                    <p class="quote">"תורה היא לא סתם ידע. תורה היא אור." - ר' חיים עוזר</p>
+                    <p class="quote">"לימוד תורה הוא הדרך לעלות מעלה מעלה." - ר' יוסף חיים</p>
+                    <p class="quote">"תורה מביאה ברכה בכל תחום בחיים." - ר' נחמן מברסלב</p>
+                    <p class="quote">"אין טוב אלא תורה. אין תורה אלא למידה." - ר' משה חיים</p>
+                    <p class="quote">"לימוד תורה הוא מקור עושר אמיתי ועמוק." - ר' אברהם יצחק</p>
+                    <p class="quote">"תורה היא מנחמת הלב ומרפאת הנפש." - ר' משה כהן</p>
+                    <p class="quote">"הדרך לשפר את עצמך מתחילה בלימוד תורה." - ר' אליעזר גולדשטין</p>
+                    <p class="quote">"בזכות התורה אנו מוצאים משמעות לחיים." - ר' נתן מימון</p>
+                </div>
+            </div>
         </div>
     </header>
-
+    
        
 
     <div class="container">
