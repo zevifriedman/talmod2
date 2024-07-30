@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>גמרא AI - מסכת ברכות</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Merriweather:wght@400;700&display=swap');
+  
+    :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --background-color: #f5f7fa;
+        --text-color: #34495e;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Heebo', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+        direction: rtl;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    nav {
+        background-color: rgba(255, 255, 255, 0.95);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+    }
+    
+    .logo {
+        font-family: 'Merriweather', serif;
+        font-size: 1.8em;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+    
+    .logo:hover {
+        transform: scale(1.05);
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+    
+    .nav-links li {
+        margin-right: 30px;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+    
+    header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: #fff;
+        text-align: center;
+        padding: 120px 0 60px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    h1 {
+        font-family: 'Merriweather', serif;
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .page-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 20px;
+        padding: 40px 0;
+    }
+    
+    .page-button {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: #fff;
+        border: none;
+        padding: 15px 10px;
+        font-size: 1.2em;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .page-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: all 0.6s;
+    }
+    
+    .page-button:hover::before {
+        left: 100%;
+    }
+    
+    .page-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    }
+    
+    .page-button:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2.5em;
+        }
+        
+        .page-buttons {
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        }
+        
+        .nav-links {
+            display: none;
+        }
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">AI גמרא</a>
+            <ul class="nav-links">
+                <li><a href="חיפוש מסכת.html">חיפוש מסכת</a></li>
+                <li><a href="#features">תכונות</a></li>
+                <li><a href="#testimonials">המלצות</a></li>
+                <li><a href="#faq">שאלות נפוצות</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+                <li><a href="חידושיגמרא.html">חידושי גמרא</a></li>
+                <li><a href="פורוםתלמודי.html">פורום תלמודי</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header>
+        <div class="container">
+            <h1>גמרא AI מסכת ברכות</h1>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="page-buttons">
+            <a href="https://example.com/megillah/daf-2" class="page-button">דף ב</a>
+            <a href="https://example.com/megillah/daf-3" class="page-button">דף ג</a>
+            <a href="https://example.com/megillah/daf-4" class="page-button">דף ד</a>
+            <a href="https://example.com/megillah/daf-5" class="page-button">דף ה</a>
+            <a href="https://example.com/megillah/daf-6" class="page-button">דף ו</a>
+            <a href="https://example.com/megillah/daf-7" class="page-button">דף ז</a>
+            <a href="https://example.com/megillah/daf-8" class="page-button">דף ח</a>
+            <a href="https://example.com/megillah/daf-9" class="page-button">דף ט</a>
+            <a href="https://example.com/megillah/daf-10" class="page-button">דף י</a>
+            <a href="https://example.com/megillah/daf-11" class="page-button">דף יא</a>
+            <a href="https://example.com/megillah/daf-12" class="page-button">דף יב</a>
+            <a href="https://example.com/megillah/daf-13" class="page-button">דף יג</a>
+            <a href="https://example.com/megillah/daf-14" class="page-button">דף יד</a>
+            <a href="https://example.com/megillah/daf-15" class="page-button">דף טו</a>
+            <a href="https://example.com/megillah/daf-16" class="page-button">דף טז</a>
+            <a href="https://example.com/megillah/daf-17" class="page-button">דף יז</a>
+            <a href="https://example.com/megillah/daf-18" class="page-button">דף יח</a>
+            <a href="https://example.com/megillah/daf-19" class="page-button">דף יט</a>
+            <a href="https://example.com/megillah/daf-20" class="page-button">דף כ</a>
+            <a href="https://example.com/megillah/daf-21" class="page-button">דף כא</a>
+            <a href="https://example.com/megillah/daf-22" class="page-button">דף כב</a>
+            <a href="https://example.com/megillah/daf-23" class="page-button">דף כג</a>
+            <a href="https://example.com/megillah/daf-24" class="page-button">דף כד</a>
+            <a href="https://example.com/megillah/daf-25" class="page-button">דף כה</a>
+            <a href="https://example.com/megillah/daf-26" class="page-button">דף כו</a>
+            <a href="https://example.com/megillah/daf-27" class="page-button">דף כז</a>
+            <a href="https://example.com/megillah/daf-28" class="page-button">דף כח</a>
+            <a href="https://example.com/megillah/daf-29" class="page-button">דף כט</a>
+            <a href="https://example.com/megillah/daf-30" class="page-button">דף ל</a>
+            <a href="https://example.com/megillah/daf-31" class="page-button">דף לא</a>
+            <a href="https://example.com/megillah/daf-32" class="page-button">דף לב</a>
+            <a href="https://example.com/megillah/daf-33" class="page-button">דף לג</a>
+            <a href="https://example.com/megillah/daf-34" class="page-button">דף לד</a>
+            <a href="https://example.com/megillah/daf-35" class="page-button">דף לה</a>
+            <a href="https://example.com/megillah/daf-36" class="page-button">דף לו</a>
+            <a href="https://example.com/megillah/daf-37" class="page-button">דף לז</a>
+            <a href="https://example.com/megillah/daf-38" class="page-button">דף לח</a>
+            <a href="https://example.com/megillah/daf-39" class="page-button">דף לט</a>
+            <a href="https://example.com/megillah/daf-40" class="page-button">דף מ</a>
+            <a href="https://example.com/megillah/daf-41" class="page-button">דף מא</a>
+            <a href="https://example.com/megillah/daf-42" class="page-button">דף מב</a>
+            <a href="https://example.com/megillah/daf-43" class="page-button">דף מג</a>
+            <a href="https://example.com/megillah/daf-44" class="page-button">דף מד</a>
+            <a href="https://example.com/megillah/daf-45" class="page-button">דף מה</a>
+            <a href="https://example.com/megillah/daf-46" class="page-button">דף מו</a>
+            <a href="https://example.com/megillah/daf-47" class="page-button">דף מז</a>
+            <a href="https://example.com/megillah/daf-48" class="page-button">דף מח</a>
+            <a href="https://example.com/megillah/daf-49" class="page-button">דף מט</a>
+            <a href="https://example.com/megillah/daf-50" class="page-button">דף נ</a>
+            <a href="https://example.com/megillah/daf-51" class="page-button">דף נא</a>
+            <a href="https://example.com/megillah/daf-52" class="page-button">דף נב</a>
+            <a href="https://example.com/megillah/daf-53" class="page-button">דף נג</a>
+            <a href="https://example.com/megillah/daf-54" class="page-button">דף נד</a>
+            <a href="https://example.com/megillah/daf-55" class="page-button">דף נה</a>
+            <a href="https://example.com/megillah/daf-56" class="page-button">דף נו</a>
+            <a href="https://example.com/megillah/daf-57" class="page-button">דף נז</a>
+            <a href="https://example.com/megillah/daf-58" class="page-button">דף נח</a>
+            <a href="https://example.com/megillah/daf-59" class="page-button">דף נט</a>
+            <a href="https://example.com/megillah/daf-60" class="page-button">דף ס</a>
+            <a href="https://example.com/megillah/daf-61" class="page-button">דף סא</a>
+            <a href="https://example.com/megillah/daf-62" class="page-button">דף סב</a>
+            <a href="https://example.com/megillah/daf-63" class="page-button">דף סג</a>
+            <a href="https://example.com/megillah/daf-64" class="page-button">דף סד</a>
+            <a href="https://example.com/megillah/daf-65" class="page-button">דף סה</a>
+            <a href="https://example.com/megillah/daf-66" class="page-button">דף סו</a>
+            <a href="https://example.com/megillah/daf-67" class="page-button">דף סז</a>
+            <a href="https://example.com/megillah/daf-68" class="page-button">דף סח</a>
+
+            
+        </div>
+    </main>
+</body></html>
