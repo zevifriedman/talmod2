@@ -1,9 +1,11 @@
+
+
 <!DOCTYPE html>
 <html lang="he">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>גמרא AI - חיפוש מסכתות עם כותרת עליונה</title>
+<title>גמרא AI - חיפוש מסכתות עם כותרת עליונה (רספונסיבי)</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Frank+Ruhl+Libre:wght@400;700&display=swap');
@@ -16,6 +18,12 @@
         --accent-color: #e74c3c;
     }
 
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
     body {
         font-family: 'Heebo', sans-serif;
         background: linear-gradient(to bottom, var(--background-color), #b3d9ff);
@@ -25,9 +33,8 @@
         align-items: center;
         justify-content: space-between;
         min-height: 100vh;
-        margin: 0;
         padding: 20px;
-        box-sizing: border-box;
+        direction: rtl;
     }
 
     nav {
@@ -35,6 +42,7 @@
         position: fixed;
         width: 100%;
         top: 0;
+        right: 0;
         z-index: 1000;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
@@ -96,13 +104,13 @@
     }
 
     h1 {
-        font-size: 4rem;
+        font-size: 3rem;
         font-weight: 700;
         color: var(--primary-color);
         margin-bottom: 1rem;
         text-align: center;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        margin-top: 80px; /* Add space for the fixed navbar */
+        margin-top: 80px;
     }
 
     .search-container {
@@ -128,8 +136,8 @@
     }
 
     .globe-container {
-        width: 80vw;
-        height: 80vw;
+        width: 90vw;
+        height: 90vw;
         max-width: 600px;
         max-height: 600px;
         position: relative;
@@ -181,16 +189,16 @@
         transition: all 0.5s ease-in-out !important;
         background: radial-gradient(circle, var(--primary-color), var(--accent-color)) !important;
         color: white !important;
-        padding: 40px !important;
-        font-size: 1.2rem !important;
+        padding: 20px !important;
+        font-size: 1rem !important;
         font-weight: 500 !important;
         letter-spacing: 1px !important;
         text-transform: uppercase !important;
         border-radius: 50% !important;
         box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
-        width: 120px !important;
-        height: 120px !important;
+        width: 100px !important;
+        height: 100px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -209,9 +217,9 @@
     }
 
     .footer-quote {
-        font-size: 1.2rem;
+        font-size: 1rem;
         text-align: center;
-        padding: 20px;
+        padding: 15px;
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         color: white;
         border-radius: 10px;
@@ -222,17 +230,41 @@
     }
 
     @media (max-width: 768px) {
-        h1 { font-size: 3rem; }
-        .globe-container { width: 90vw; height: 90vw; }
-        .footer-quote { font-size: 1rem; padding: 15px; }
-        .focused {
-            width: 100px !important;
-            height: 100px !important;
-            font-size: 1rem !important;
-            padding: 30px !important;
+        h1 { 
+            font-size: 2.5rem; 
+            margin-top: 60px;
+        }
+        .globe-container { 
+            width: 100vw; 
+            height: 100vw; 
         }
         .nav-links {
             display: none;
+        }
+        .logo {
+            font-size: 1.5em;
+        }
+        nav .container {
+            padding: 10px 15px;
+        }
+        .tractate-button {
+            font-size: 0.8rem;
+            padding: 8px 12px;
+        }
+        .focused {
+            width: 80px !important;
+            height: 80px !important;
+            font-size: 0.9rem !important;
+            padding: 15px !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 2rem;
+        }
+        .footer-quote {
+            font-size: 0.9rem;
         }
     }
 </style>
@@ -325,7 +357,6 @@
 
                 tractateObjects.push({ button, ...tractate, position: new THREE.Vector3(x, y, z) });
 
-                // Add click event to open URL
                 button.addEventListener('click', () => {
                     window.location.href = tractate.url;
                 });
@@ -336,8 +367,11 @@
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(600, 600);
-            document.getElementById('globe-container').appendChild(renderer.domElement);
+            
+            const globeContainer = document.getElementById('globe-container');
+            const containerSize = Math.min(globeContainer.clientWidth, globeContainer.clientHeight);
+            renderer.setSize(containerSize, containerSize);
+            globeContainer.appendChild(renderer.domElement);
 
             const geometry = new THREE.SphereGeometry(3, 64, 64);
             const material = new THREE.MeshPhongMaterial({
@@ -364,35 +398,48 @@
             let rotation = { x: 0, y: 0 };
             let autoRotate = true;
 
-            renderer.domElement.addEventListener('mousedown', () => {
+            function onMouseDown(event) {
                 isDragging = true;
-            });
-
-            renderer.domElement.addEventListener('mouseup', () => {
-                isDragging = false;
-            });
-
-            renderer.domElement.addEventListener('mousemove', (e) => {
-                if (isDragging) {
-                    const deltaMove = {
-                        x: e.offsetX - previousMousePosition.x,
-                        y: e.offsetY - previousMousePosition.y
-                    };
-
-                    rotation.x += deltaMove.y * 0.005;
-                    rotation.y += deltaMove.x * 0.005;
-
-                    sphere.rotation.x = rotation.x;
-                    sphere.rotation.y = rotation.y;
-
-                    updateButtonPositions();
-                }
-
                 previousMousePosition = {
-                    x: e.offsetX,
-                    y: e.offsetY
+                    x: event.clientX || event.touches[0].clientX,
+                    y: event.clientY || event.touches[0].clientY
                 };
-            });
+            }
+
+            function onMouseMove(event) {
+                if (!isDragging) return;
+
+                const currentPosition = {
+                    x: event.clientX || event.touches[0].clientX,
+                    y: event.clientY || event.touches[0].clientY
+                };
+
+                const deltaMove = {
+                    x: currentPosition.x - previousMousePosition.x,
+                    y: currentPosition.y - previousMousePosition.y
+                };
+
+                rotation.x += deltaMove.y * 0.005;
+                rotation.y += deltaMove.x * 0.005;
+
+                sphere.rotation.x = rotation.x;
+                sphere.rotation.y = rotation.y;
+
+                updateButtonPositions();
+
+                previousMousePosition = currentPosition;
+            }
+
+            function onMouseUp() {
+                isDragging = false;
+            }
+
+            renderer.domElement.addEventListener('mousedown', onMouseDown);
+            renderer.domElement.addEventListener('touchstart', onMouseDown);
+            renderer.domElement.addEventListener('mousemove', onMouseMove);
+            renderer.domElement.addEventListener('touchmove', onMouseMove);
+            renderer.domElement.addEventListener('mouseup', onMouseUp);
+            renderer.domElement.addEventListener('touchend', onMouseUp);
 
             function updateButtonPositions() {
                 tractateObjects.forEach((tractateObj) => {
@@ -418,6 +465,13 @@
                 renderer.render(scene, camera);
             }
             animate();
+
+            window.addEventListener('resize', () => {
+                const newSize = Math.min(globeContainer.clientWidth, globeContainer.clientHeight);
+                camera.aspect = 1;
+                camera.updateProjectionMatrix();
+                renderer.setSize(newSize, newSize);
+            });
 
             const searchInput = document.getElementById('search');
             searchInput.addEventListener('input', (e) => {
@@ -445,7 +499,6 @@
             });
         }
 
-        // Initialize the buttons and Three.js scene
         createButtons();
         initThreeJS();
     </script>
