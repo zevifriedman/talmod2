@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
+<html><head><base href="https://example.com/%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A9%D7%AA%D7%95%D7%A1%D7%99%D7%A3%20%D7%9C%D7%99%20%D7%90%D7%AA%20%D7%94%D7%9B%D7%95%D7%AA%D7%A8%D7%AA%20%D7%94%D7%A2%D7%9C%D7%99%D7%95%D7%A0%D7%94%20%D7%A9%D7%99%D7%A9%20%D7%A4%D7%94%20%D7%92%D7%9D%20%D7%9C%D7%A7%D7%95%D7%93%20%D7%94%D7%96%D7%94%20">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>גמרא AI - חיפוש מסכתות</title>
+<title>גמרא AI - חיפוש מסכתות עם כותרת עליונה</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
-
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Frank+Ruhl+Libre:wght@400;700&display=swap');
+  
     :root {
         --primary-color: #4a90e2;
         --secondary-color: #f39c12;
@@ -30,6 +28,71 @@
         box-sizing: border-box;
     }
 
+    nav {
+        background-color: rgba(255, 255, 255, 0.95);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .logo {
+        font-family: 'Frank Ruhl Libre', serif;
+        font-size: 1.8em;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+    
+    .logo:hover {
+        transform: scale(1.05);
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+    
+    .nav-links li {
+        margin-right: 30px;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        right: 0;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
     h1 {
         font-size: 4rem;
         font-weight: 700;
@@ -37,6 +100,7 @@
         margin-bottom: 1rem;
         text-align: center;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        margin-top: 80px; /* Add space for the fixed navbar */
     }
 
     .search-container {
@@ -165,10 +229,26 @@
             font-size: 1rem !important;
             padding: 30px !important;
         }
+        .nav-links {
+            display: none;
+        }
     }
 </style>
 </head>
 <body>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">גמרא AI</a>
+            <ul class="nav-links">
+                <li><a href="חיפוש מסכת.html">חיפוש מסכת</a></li>
+                <li><a href="#features">תכונות</a></li>
+                <li><a href="#testimonials">המלצות</a></li>
+                <li><a href="#faq">שאלות נפוצות</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <h1>גמרא AI</h1>
     <div class="search-container">
         <input type="text" id="search" placeholder="חפש מסכת...">
