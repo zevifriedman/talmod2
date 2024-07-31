@@ -547,13 +547,15 @@
             renderer.setSize(containerSize, containerSize);
             globeContainer.appendChild(renderer.domElement);
 
+            // Earth texture
+            const textureLoader = new THREE.TextureLoader();
+            const earthTexture = textureLoader.load('https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg');
+            
             const geometry = new THREE.SphereGeometry(3, 64, 64);
             const material = new THREE.MeshPhongMaterial({
-                color: 0x4a90e2,
-                wireframe: false,
-                transparent: true,
-                opacity: 0.7,
-                shininess: 50
+                map: earthTexture,
+                specular: new THREE.Color('grey'),
+                shininess: 10
             });
             const sphere = new THREE.Mesh(geometry, material);
             scene.add(sphere);
