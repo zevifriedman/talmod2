@@ -582,6 +582,7 @@
                 <h2>גלו עולם חדש של לימוד גמרא</h2>
                 <p>הצטרפו אלינו והתחילו את המסע המרתק שלכם לעומק חוכמת הדורות</p>
                 <a href="index2.html" class="cta-button">ראו דוגמה</a>
+                
             </div>
         </section>
         
@@ -762,3 +763,125 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->
 </body></html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Example</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f4f4f4;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .popup-content {
+            background-color: #4373cc;
+            padding: 30px;
+            border-radius: 20px;
+            position: relative;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .popup.show .popup-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .popup-title {
+            font-size: 26px;
+            color: #fefdfd;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+        }
+
+        .popup-text {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-family: 'Georgia', serif;
+        }
+
+
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Popup Container -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" id="close-btn">&times;</span>
+
+        <div class="popup-title">! שדרגו את לימודכם</div>
+        <div class="popup-text">גלה את העושר שבגמרא והעשיר את ידיעותיך בצורה מהנה. לחצו כאן כדי להתחיל את המסע שלכם </div>
+        <a href="חיפוש מסכת.html" class="cta-button">חפשו מסכת</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Show the popup after 10 seconds
+        setTimeout(function() {
+            document.getElementById('popup').classList.add('show');
+        }, 10000);
+
+        // Get the close button element
+        var closeButton = document.getElementById('close-btn');
+
+        // Add click event to close button
+        closeButton.addEventListener('click', function() {
+            document.getElementById('popup').classList.remove('show');
+        });
+    });
+</script>
+
+</body>
+</html>
