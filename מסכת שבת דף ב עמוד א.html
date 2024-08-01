@@ -4,7 +4,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>גמרא AI - ניתוח מתקדם של מסכת שבת דף ב עמוד ב</title>
+<title>גמרא AI - ניתוח מתקדם של מסכת שבת דף ב עמוד א</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Frank+Ruhl+Libre:wght@300;400;700&display=swap');
     
@@ -141,17 +141,19 @@
         justify-content: space-between;
         padding: 0 20px;
         z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
     
     .navigation-button {
         background: var(--primary-color);
         color: #fff;
-        padding: 10px 15px;
-        border-radius: 25px;
+        padding: 15px 25px;
+        border-radius: 50px;
         cursor: pointer;
         box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         transition: all 0.3s ease;
-        font-size: 1em;
+        font-size: 1.1em;
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -161,6 +163,7 @@
     .navigation-button:hover {
         transform: translateY(-3px);
         box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        background: var(--secondary-color);
     }
     
     .analysis-section {
@@ -205,32 +208,26 @@
         transform: scale(1.02);
     }
     
-    @keyframes pulse {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.05);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-    
-    .pulse {
-        animation: pulse 2s infinite;
-    }
-    
     @media (max-width: 768px) {
         .navigation-buttons {
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            bottom: 10px;
         }
         
         .navigation-button {
-            width: 80%;
-            margin-bottom: 10px;
+            width: 90%;
+            padding: 12px 15px;
+            font-size: 1em;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+        }
+        
+        .gemara-text, .analysis-box {
+            padding: 20px;
         }
     }
 </style>
@@ -238,110 +235,111 @@
 <body>
     <header>
         <div class="container">
-            <h1>AI גמרא</h1>
-            <p>מסכת שבת דף ב עמוד ב - חוויה אינטראקטיבית ומעמיקה</p>
+            <h1>גמרא AI</h1>
+            <p>מסכת שבת דף ב עמוד א - חוויה אינטראקטיבית ומעמיקה</p>
         </div>
     </header>
 
     <main class="container">
         <div class="gemara-container">
             <div class="gemara-text">
+                <h2>משנה</h2>
+                <p>
+                    <span class="highlight" data-tooltip="המשנה מתחילה בהגדרת מושג 'יציאות השבת', המתייחס לפעולות הוצאה והכנסה בשבת">יציאות השבת שתים שהן ארבע בפנים ושתים שהן ארבע בחוץ</span>. 
+                    כיצד? <span class="highlight" data-tooltip="המשנה מתארת מקרה ספציפי להדגמת הכלל">העני עומד בחוץ ובעל הבית בפנים</span>. 
+                    פשט העני את ידו לפנים ונתן לתוך ידו של בעל הבית או שנטל מתוכה והוציא - <span class="highlight" data-tooltip="קביעת האחריות ההלכתית">העני חייב ובעל הבית פטור</span>. 
+                    פשט בעל הבית את ידו לחוץ ונתן לתוך ידו של עני או שנטל מתוכה והכניס - <span class="highlight" data-tooltip="קביעת האחריות ההלכתית במקרה הפוך">בעל הבית חייב והעני פטור</span>. 
+                    פשט העני את ידו לפנים ונטל בעל הבית מתוכה או שנתן לתוכה והוציא - <span class="highlight" data-tooltip="מקרה שבו שניהם לא ביצעו את הפעולה המלאה">שניהם פטורין</span>. 
+                    פשט בעל הבית את ידו לחוץ ונטל העני מתוכה או שנתן לתוכה והכניס - <span class="highlight" data-tooltip="מקרה נוסף שבו שניהם לא ביצעו את הפעולה המלאה">שניהם פטורין</span>.
+                </p>
                 <h2>גמרא</h2>
                 <p>
-                    <span class="highlight" data-tooltip="הגמרא מציינת מספר משניות העוסקות במושג 'שתים שהן ארבע'">ידיעות הטומאה שתים שהן ארבע מראות נגעים שנים שהן ד' יציאות השבת שתים שהן ארבע</span>. 
-                    <span class="highlight" data-tooltip="הגמרא שואלת על ההבדל בין הניסוח במשנה שלנו לבין משניות אחרות">מאי שנא הכא דתני ב' שהן ד' בפנים וב' שהן ארבע בחוץ ומאי שנא התם דתני שתים שהן ארבע ותו לא</span>? 
-                    <span class="highlight" data-tooltip="הגמרא מתרצת שבמסכת שבת, שהיא עיקר דיני שבת, מפרטים יותר">הכא דעיקר שבת הוא תני אבות ותני תולדות התם דלאו עיקר שבת הוא אבות תני תולדות לא תני</span>. 
-                    אבות מאי ניהו יציאות ויציאות תרי הויין וכי תימא מהן לחיוב ומהן לפטור והא דומיא דמראות נגעים קתני מה התם כולהו לחיובא אף הכא נמי כולהו לחיובא. 
-                    <span class="highlight" data-tooltip="רב פפא מציע תירוץ אחר">אלא אמר רב פפא הכא דעיקר שבת הוא תני חיובי ופטורי התם דלאו עיקר שבת הוא חיובי תני ופטורי לא תני</span>. 
-                    חיובי מאי ניהו יציאות יציאות תרתי הויין שתים דהוצאה ושתים דהכנסה והא יציאות קתני. 
-                    <span class="highlight" data-tooltip="רב אשי מסביר שהמשנה קוראת להכנסה גם 'הוצאה'">אמר רב אשי תנא הכנסה נמי הוצאה קרי לה</span>. 
-                    ממאי מדתנן המוציא מרשות לרשות חייב מי לא עסקינן דקא מעייל מרה"ר לרה"י וקא קרי לה הוצאה וטעמא מאי כל עקירת חפץ ממקומו תנא הוצאה קרי לה. 
-                    <span class="highlight" data-tooltip="רבינא מביא ראיה נוספת לדברי רב אשי">אמר רבינא מתניתין נמי דיקא דקתני יציאות וקא מפרש הכנסה לאלתר ש"מ</span>. 
-                    רבא אמר רשויו' קתני רשויו' שבת שתים א"ל רב מתנה לאביי הא תמני הויין תרתי סרי הויין וליטעמיך שיתסרי הויין א"ל הא לא קשיא בשלמא.
+                    <span class="highlight" data-tooltip="הגמרא מתחילה בהשוואה למשנה במסכת שבועות">תנן התם שבועות שתים שהן ארבע</span>...
                 </p>
             </div>
             <div class="analysis-container">
                 <div class="analysis-box">
                     <h3 class="analysis-title">ניתוח מבני ורעיוני מעמיק</h3>
                     <div class="analysis-section">
-                        <h3>מבנה הסוגיה</h3>
-                        <p>הסוגיה מורכבת ממספר חלקים מרכזיים:</p>
+                        <h3>מבנה המשנה</h3>
+                        <p>המשנה מורכבת ממספר חלקים מרכזיים:</p>
                         <ol>
-                            <li><strong>השוואה בין משניות:</strong> "שתים שהן ארבע" במסכתות שונות</li>
-                            <li><strong>שאלה על הבדלי ניסוח:</strong> בין מסכת שבת למסכתות אחרות</li>
-                            <li><strong>תירוצים שונים:</strong> מאמוראים שונים להסבר ההבדלים</li>
-                            <li><strong>דיון על המושגים:</strong> "הוצאה" ו"הכנסה" בהקשר של שבת</li>
+                            <li><strong>הצגת הכלל:</strong> "יציאות השבת שתים שהן ארבע"</li>
+                            <li><strong>הדגמה מפורטת:</strong> מקרים שונים של הוצאה והכנסה</li>
+                            <li><strong>קביעת האחריות:</strong> מי חייב ומי פטור בכל מקרה</li>
                         </ol>
                     </div>
                     <div class="analysis-section">
                         <h3>נקודות מפתח לעיון מעמיק</h3>
                         <ul>
-                            <li>ההבחנה בין "אבות" ו"תולדות" במלאכות שבת</li>
-                            <li>משמעות המושג "שתים שהן ארבע" בהקשרים שונים</li>
-                            <li>היחס בין "הוצאה" ו"הכנסה" כמלאכות שבת</li>
-                            <li>השפעת מיקום הסוגיה (במסכת שבת) על אופן הצגתה</li>
+                            <li>הגדרת רשויות: "בפנים" ו"בחוץ"</li>
+                            <li>חשיבות הפעולה המלאה: עקירה והנחה</li>
+                            <li>השפעת מיקום האדם על חיובו</li>
+                            <li>המושג של "שתים שהן ארבע"</li>
                         </ul>
                     </div>
                 </div>
                 <div class="analysis-box">
                     <h3 class="analysis-title">ניתוח AI מתקדם ורב-ממדי</h3>
                     <div class="analysis-section">
-                        <h3>1. מתודולוגיה תלמודית</h3>
-                        <p>הסוגיה מדגימה מספר עקרונות מתודולוגיים חשובים בלימוד התלמוד:</p>
+                        <h3>1. מבנה לוגי ומשפטי</h3>
+                        <p>המשנה מציגה מבנה לוגי מורכב:</p>
                         <ul>
-                            <li><strong>השוואה בין מקורות:</strong> הגמרא משווה בין ניסוחים דומים במשניות שונות</li>
-                            <li><strong>שאילת שאלות:</strong> "מאי שנא" - מה שונה? - כדרך לחידוד ההבנה</li>
-                            <li><strong>הצעת תירוצים מרובים:</strong> אמוראים שונים מציעים הסברים שונים</li>
-                            <li><strong>דיוק בלשון:</strong> ניתוח מדוקדק של מילים ומושגים</li>
+                            <li><strong>כלל כללי:</strong> "יציאות השבת שתים שהן ארבע"</li>
+                            <li><strong>פירוט מקרים:</strong> הדגמת הכלל דרך מקרים ספציפיים</li>
+                            <li><strong>קביעת אחריות:</strong> חיוב ופטור בכל מקרה</li>
                         </ul>
-                        <p><strong>ניתוח AI:</strong> שיטות אלו מדגימות חשיבה אנליטית מתקדמת, המשלבת השוואה, שאילת שאלות ביקורתיות, והצעת פתרונות מרובים - גישות שהן בסיס לחשיבה מדעית ופילוסופית מודרנית.</p>
+                        <p><strong>ניתוח AI:</strong> מבנה זה מדגים חשיבה משפטית מתקדמת, המשלבת עקרונות כלליים עם יישום מעשי, ומהווה בסיס למערכת משפטית מורכבת.</p>
                     </div>
                     <div class="analysis-section">
-                        <h3>2. מבנה לוגי ומשפטי</h3>
-                        <p>הסוגיה מציגה מבנה לוגי מורכב:</p>
+                        <h3>2. תפיסת מרחב והגדרת רשויות</h3>
+                        <p>המשנה מגדירה שתי רשויות עיקריות: "בפנים" ו"בחוץ"</p>
+                        <p><strong>ניתוח AI:</strong> הגדרה זו משקפת:</p>
                         <ol>
-                            <li><strong>הצגת בעיה:</strong> סתירה לכאורה בין ניסוחי משניות</li>
-                            <li><strong>הצעת פתרונות:</strong> תירוצים שונים מאמוראים</li>
-                            <li><strong>בחינת הפתרונות:</strong> העלאת קשיים על כל תירוץ</li>
-                            <li><strong>מסקנה:</strong> הגעה להבנה מעמיקה יותר של המושגים</li>
+                            <li>תפיסה מרחבית מתקדמת בהלכה היהודית</li>
+                            <li>יצירת גבולות הלכתיים במרחב הפיזי</li>
+                            <li>השפעת המיקום על ההגדרה ההלכתית של פעולות</li>
                         </ol>
-                        <p><strong>ניתוח AI:</strong> מבנה זה מקביל לשיטות של ניתוח משפטי ולוגי מודרני, כולל הצגת טיעון, בחינת ראיות נגדיות, והגעה למסקנה מבוססת.</p>
                     </div>
                     <div class="analysis-section">
-                        <h3>3. תפיסת מרחב ומושגי יסוד</h3>
-                        <p>הסוגיה עוסקת במושגי יסוד של מלאכות שבת:</p>
+                        <h3>3. מושג ה"מלאכה" בשבת</h3>
+                        <p>המשנה מדגישה את חשיבות הפעולה המלאה (עקירה והנחה) בהגדרת מלאכת הוצאה:</p>
                         <ul>
-                            <li><strong>הוצאה והכנסה:</strong> כמושגים מרכזיים במלאכות שבת</li>
-                            <li><strong>רשויות:</strong> ההבחנה בין רשות היחיד ורשות הרבים</li>
-                            <li><strong>אבות ותולדות:</strong> היררכיה של איסורים</li>
+                            <li>עקירה: הרמת החפץ ממקומו המקורי</li>
+                            <li>הנחה: הנחת החפץ במקום החדש</li>
                         </ul>
-                        <p><strong>ניתוח AI:</strong> תפיסות אלו משקפות חשיבה מופשטת מתקדמת, המגדירה מרחבים וירטואליים ומערכות מושגיות מורכבות - דבר המקביל לתחומים מודרניים כמו תכנון עירוני, אבטחת מידע, ותיאוריות של קטגוריזציה.</p>
+                        <p><strong>ניתוח AI:</strong> תפיסה זו מראה:</p>
+                        <ol>
+                            <li>הבנה מעמיקה של מהות המלאכה</li>
+                            <li>יצירת מערכת הלכתית מדויקת ומפורטת</li>
+                            <li>התייחסות לכוונה ולתוצאה בקביעת האיסור</li>
+                        </ol>
                     </div>
                 </div>
                 <div class="analysis-box">
                     <h3 class="analysis-title">תובנות נוספות ורב-תחומיות</h3>
                     <div class="analysis-section">
-                        <h3>השלכות פילוסופיות ומשפטיות</h3>
-                        <p>הדיון בסוגיה מעלה שאלות פילוסופיות ומשפטיות עמוקות:</p>
+                        <h3>השלכות חברתיות ותרבותיות</h3>
+                        <p>המשנה משקפת מבנה חברתי ומעמדי:</p>
                         <ul>
-                            <li>הגדרת גבולות וקטגוריות: מה נחשב "בפנים" ומה "בחוץ"?</li>
-                            <li>אחריות משפטית: מתי אדם נחשב "חייב" ומתי "פטור"?</li>
-                            <li>יחס בין כלל לפרט: כיצד "אבות" ו"תולדות" מגדירים מערכת חוקים?</li>
+                            <li>הבחנה בין "עני" ו"בעל הבית"</li>
+                            <li>השפעת המעמד החברתי על ההלכה</li>
+                            <li>תפיסת המרחב הפרטי והציבורי</li>
                         </ul>
-                        <p><strong>ניתוח AI:</strong> שאלות אלו רלוונטיות לתחומים מודרניים כמו פילוסופיה של המשפט, אתיקה של טכנולוגיה, וסוגיות של פרטיות וגבולות במרחב הדיגיטלי.</p>
+                        <p><strong>ניתוח AI:</strong> משנה זו מספקת תובנות על המבנה החברתי בתקופת חז"ל ועל האינטראקציה בין קבוצות חברתיות שונות.</p>
                     </div>
                     <div class="analysis-section">
-                        <h3>היבטים לשוניים וסמנטיים</h3>
-                        <p>הסוגיה מדגישה את חשיבות הדיוק הלשוני:</p>
+                        <h3>פילוסופיה של החוק והאתיקה</h3>
+                        <p>המשנה מעלה שאלות פילוסופיות מעמיקות:</p>
                         <ol>
-                            <li>משמעות המונח "יציאות" ככולל גם "הכנסות"</li>
-                            <li>הבחנה בין "שתים" ל"ארבע" כביטוי למורכבות</li>
-                            <li>שימוש במונחים טכניים כמו "אבות" ו"תולדות"</li>
+                            <li>מהי אחריות מוסרית וחוקית?</li>
+                            <li>כיצד מוגדרת פעולה שלמה?</li>
+                            <li>מהו היחס בין כוונה לתוצאה בקביעת אשמה?</li>
                         </ol>
-                        <p><strong>ניתוח AI:</strong> ניתוח זה מקביל לתחומים מודרניים כמו בלשנות קוגניטיבית, סמנטיקה פורמלית, ועיבוד שפה טבעית (NLP) - כולם עוסקים בדקויות של משמעות ושימוש בשפה.</p>
+                        <p><strong>ניתוח AI:</strong> הדיון במשנה זו מהווה בסיס לשיח פילוסופי רחב על טבע החוק, האחריות האישית, והיחס בין מעשה לתוצאה.</p>
                     </div>
-                    <div class="interactive-element" id="concept-map">
-                        לחץ כאן לצפייה במפת מושגים אינטראקטיבית של הסוגיה
+                    <div class="interactive-element" id="simulation">
+                        לחץ כאן לצפייה בסימולציה אינטראקטיבית של מקרי המשנה
                     </div>
                 </div>
             </div>
@@ -349,8 +347,8 @@
     </main>
 
     <div class="navigation-buttons">
-        <a href="מסכת שבת דף ג עמוד א.html" class="navigation-button pulse">מעבר לדף ג עמוד א</a>
-        <a href="מסכת שבת דף ב עמוד א.html" class="navigation-button pulse">חזרה לדף ב עמוד א</a>
+        <a href="מסכת שבת דף ב עמוד ב.html" class="navigation-button">מעבר לדף ב עמוד ב</a>
+        <a href="חיפוש מסכת.html" class="navigation-button">חזרה לדף הראשי</a>
     </div>
 
     <script>
@@ -377,10 +375,70 @@
             });
         });
 
-        // Interactive concept map
-        const conceptMap = document.getElementById('concept-map');
-        conceptMap.addEventListener('click', () => {
-            alert('מפת המושגים האינטראקטיבית תציג את הקשרים בין המושגים המרכזיים בסוגיה, כגון "יציאות", "הכנסות", "אבות", ו"תולדות". תכונה זו תהיה זמינה בגרסה הבאה של המערכת!');
+        // Interactive simulation
+        const simulation = document.getElementById('simulation');
+        simulation.addEventListener('click', () => {
+            alert('הסימולציה האינטראקטיבית תציג את המקרים השונים המתוארים במשנה, תוך הדגשת ההבדלים בין המקרים והשלכותיהם ההלכתיות. תכונה זו תהיה זמינה בגרסה הבאה של המערכת!');
+        });
+
+        // Navigation buttons visibility
+        const navigationButtons = document.querySelector('.navigation-buttons');
+        let isScrolling = false;
+        let scrollTimeout;
+        let hideTimeout;
+
+        function showNavigationButtons() {
+            navigationButtons.style.opacity = '1';
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                navigationButtons.style.opacity = '0';
+            }, 4000);
+        }
+
+        function hideNavigationButtons() {
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                navigationButtons.style.opacity = '0';
+            }, 4000);
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                isScrolling = true;
+                showNavigationButtons();
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isScrolling = false;
+                    hideNavigationButtons();
+                }, 100);
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const viewportHeight = window.innerHeight;
+            if (e.clientY > viewportHeight - 100) {
+                showNavigationButtons();
+            } else {
+                hideNavigationButtons();
+            }
+        });
+
+        // Touch events for mobile
+        let touchStartY;
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            const touchEndY = e.touches[0].clientY;
+            const diff = touchStartY - touchEndY;
+            if (Math.abs(diff) > 5) { // Threshold to detect intentional scroll
+                showNavigationButtons();
+            }
+        });
+
+        document.addEventListener('touchend', () => {
+            hideNavigationButtons();
         });
     });
     </script>
