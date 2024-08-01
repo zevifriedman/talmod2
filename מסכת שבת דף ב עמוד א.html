@@ -1,367 +1,371 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>גמרא AI - ניתוח מתקדם של מסכת שבת דף ב עמוד א</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Frank+Ruhl+Libre:wght@300;400;700&display=swap');
-        
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --background-color: #ecf0f1;
-            --text-color: #34495e;
-            --highlight-color: #f1c40f;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Heebo', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            direction: rtl;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: #fff;
-            padding: 40px 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        h1, h2, h3 {
-            font-family: 'Frank Ruhl Libre', serif;
-        }
-        
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .gemara-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .gemara-text {
-            flex: 1;
-            min-width: 300px;
-            background: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 1.2em;
-            line-height: 1.8;
-            transition: all 0.3s ease;
-        }
-        
-        .gemara-text:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        .analysis-container {
-            flex: 2;
-            min-width: 300px;
-        }
-        
-        .analysis-box {
-            background: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
-        
-        .analysis-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        .analysis-title {
-            font-size: 1.8em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 10px;
-        }
-        
-        .highlight {
-            background-color: var(--highlight-color);
-            padding: 2px 5px;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .highlight:hover {
-            background-color: #f39c12;
-        }
-        
-        .tooltip {
-            position: absolute;
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            z-index: 1000;
-            max-width: 300px;
-            font-size: 0.9em;
-            transition: all 0.3s ease;
-        }
-        
-        #ai-assistant {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary-color);
-            color: #fff;
-            padding: 15px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            font-size: 1.1em;
-            z-index: 1000;
-        }
-        
-        #ai-assistant:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        
-        .analysis-section {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .analysis-section:hover {
-            background: #e9ecef;
-        }
-        
-        .analysis-section h3 {
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-            font-size: 1.4em;
-        }
-        
-        .analysis-section p {
-            margin-bottom: 15px;
-        }
-        
-        .analysis-section ul, .analysis-section ol {
-            padding-right: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .interactive-element {
-            background-color: #e0f7fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .interactive-element:hover {
-            background-color: #b2ebf2;
-            transform: scale(1.02);
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-    </style>
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <h1>גמרא AI</h1>
-                <p>מסכת שבת דף ב עמוד א - חוויה אינטראקטיבית ומעמיקה</p>
-            </div>
-        </header>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>גמרא AI - ניתוח מתקדם של מסכת שבת דף ב עמוד א</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Frank+Ruhl+Libre:wght@300;400;700&display=swap');
     
-        <main class="container">
-            <div class="gemara-container">
-                <div class="gemara-text">
-                    <h2>משנה</h2>
-                    <p>
-                        <span class="highlight" data-tooltip="המשנה מתחילה בהגדרת מושג 'יציאות השבת', המתייחס לפעולות הוצאה והכנסה בשבת">יציאות השבת שתים שהן ארבע בפנים ושתים שהן ארבע בחוץ</span>. 
-                        כיצד? <span class="highlight" data-tooltip="המשנה מתארת מקרה ספציפי להדגמת הכלל">העני עומד בחוץ ובעל הבית בפנים</span>. 
-                        פשט העני את ידו לפנים ונתן לתוך ידו של בעל הבית או שנטל מתוכה והוציא - <span class="highlight" data-tooltip="קביעת האחריות ההלכתית">העני חייב ובעל הבית פטור</span>. 
-                        פשט בעל הבית את ידו לחוץ ונתן לתוך ידו של עני או שנטל מתוכה והכניס - <span class="highlight" data-tooltip="קביעת האחריות ההלכתית במקרה הפוך">בעל הבית חייב והעני פטור</span>. 
-                        פשט העני את ידו לפנים ונטל בעל הבית מתוכה או שנתן לתוכה והוציא - <span class="highlight" data-tooltip="מקרה שבו שניהם לא ביצעו את הפעולה המלאה">שניהם פטורין</span>. 
-                        פשט בעל הבית את ידו לחוץ ונטל העני מתוכה או שנתן לתוכה והכניס - <span class="highlight" data-tooltip="מקרה נוסף שבו שניהם לא ביצעו את הפעולה המלאה">שניהם פטורין</span>.
-                    </p>
-                    <h2>גמרא</h2>
-                    <p>
-                        <span class="highlight" data-tooltip="הגמרא מתחילה בהשוואה למשנה במסכת שבועות">תנן התם שבועות שתים שהן ארבע</span>...
-                    </p>
-                </div>
-                <div class="analysis-container">
-                    <div class="analysis-box">
-                        <h3 class="analysis-title">ניתוח מבני ורעיוני מעמיק</h3>
-                        <div class="analysis-section">
-                            <h3>מבנה המשנה</h3>
-                            <p>המשנה מורכבת ממספר חלקים מרכזיים:</p>
-                            <ol>
-                                <li><strong>הצגת הכלל:</strong> "יציאות השבת שתים שהן ארבע"</li>
-                                <li><strong>הדגמה מפורטת:</strong> מקרים שונים של הוצאה והכנסה</li>
-                                <li><strong>קביעת האחריות:</strong> מי חייב ומי פטור בכל מקרה</li>
-                            </ol>
-                        </div>
-                        <div class="analysis-section">
-                            <h3>נקודות מפתח לעיון מעמיק</h3>
-                            <ul>
-                                <li>הגדרת רשויות: "בפנים" ו"בחוץ"</li>
-                                <li>חשיבות הפעולה המלאה: עקירה והנחה</li>
-                                <li>השפעת מיקום האדם על חיובו</li>
-                                <li>המושג של "שתים שהן ארבע"</li>
-                            </ul>
-                        </div>
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --background-color: #ecf0f1;
+        --text-color: #34495e;
+        --highlight-color: #f1c40f;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Heebo', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        direction: rtl;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: #fff;
+        padding: 40px 0;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    h1, h2, h3 {
+        font-family: 'Frank Ruhl Libre', serif;
+    }
+    
+    h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .gemara-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    .gemara-text {
+        flex: 1;
+        min-width: 300px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        font-family: 'Frank Ruhl Libre', serif;
+        font-size: 1.2em;
+        line-height: 1.8;
+        transition: all 0.3s ease;
+    }
+    
+    .gemara-text:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .analysis-container {
+        flex: 2;
+        min-width: 300px;
+    }
+    
+    .analysis-box {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+    }
+    
+    .analysis-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .analysis-title {
+        font-size: 1.8em;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        border-bottom: 3px solid var(--primary-color);
+        padding-bottom: 10px;
+    }
+    
+    .highlight {
+        background-color: var(--highlight-color);
+        padding: 2px 5px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .highlight:hover {
+        background-color: #f39c12;
+    }
+    
+    .tooltip {
+        position: absolute;
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+        max-width: 300px;
+        font-size: 0.9em;
+        transition: all 0.3s ease;
+    }
+    
+    .navigation-button {
+        position: fixed;
+        bottom: 30px;
+        background: var(--primary-color);
+        color: #fff;
+        padding: 15px 25px;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        font-size: 1.1em;
+        z-index: 1000;
+        text-decoration: none;
+    }
+    
+    #next-page {
+        left: 30px;
+    }
+    
+    #prev-page {
+        right: 30px;
+    }
+    
+    .navigation-button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    
+    .analysis-section {
+        margin-bottom: 25px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    .analysis-section:hover {
+        background: #e9ecef;
+    }
+    
+    .analysis-section h3 {
+        color: var(--secondary-color);
+        margin-bottom: 15px;
+        font-size: 1.4em;
+    }
+    
+    .analysis-section p {
+        margin-bottom: 15px;
+    }
+    
+    .analysis-section ul, .analysis-section ol {
+        padding-right: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .interactive-element {
+        background-color: #e0f7fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .interactive-element:hover {
+        background-color: #b2ebf2;
+        transform: scale(1.02);
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>גמרא AI</h1>
+            <p>מסכת שבת דף ב עמוד א - חוויה אינטראקטיבית ומעמיקה</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="gemara-container">
+            <div class="gemara-text">
+                <h2>משנה</h2>
+                <p>
+                    <span class="highlight" data-tooltip="המשנה מתחילה בהגדרת מושג 'יציאות השבת', המתייחס לפעולות הוצאה והכנסה בשבת">יציאות השבת שתים שהן ארבע בפנים ושתים שהן ארבע בחוץ</span>. 
+                    כיצד? <span class="highlight" data-tooltip="המשנה מתארת מקרה ספציפי להדגמת הכלל">העני עומד בחוץ ובעל הבית בפנים</span>. 
+                    פשט העני את ידו לפנים ונתן לתוך ידו של בעל הבית או שנטל מתוכה והוציא - <span class="highlight" data-tooltip="קביעת האחריות ההלכתית">העני חייב ובעל הבית פטור</span>. 
+                    פשט בעל הבית את ידו לחוץ ונתן לתוך ידו של עני או שנטל מתוכה והכניס - <span class="highlight" data-tooltip="קביעת האחריות ההלכתית במקרה הפוך">בעל הבית חייב והעני פטור</span>. 
+                    פשט העני את ידו לפנים ונטל בעל הבית מתוכה או שנתן לתוכה והוציא - <span class="highlight" data-tooltip="מקרה שבו שניהם לא ביצעו את הפעולה המלאה">שניהם פטורין</span>. 
+                    פשט בעל הבית את ידו לחוץ ונטל העני מתוכה או שנתן לתוכה והכניס - <span class="highlight" data-tooltip="מקרה נוסף שבו שניהם לא ביצעו את הפעולה המלאה">שניהם פטורין</span>.
+                </p>
+                <h2>גמרא</h2>
+                <p>
+                    <span class="highlight" data-tooltip="הגמרא מתחילה בהשוואה למשנה במסכת שבועות">תנן התם שבועות שתים שהן ארבע</span>...
+                </p>
+            </div>
+            <div class="analysis-container">
+                <div class="analysis-box">
+                    <h3 class="analysis-title">ניתוח מבני ורעיוני מעמיק</h3>
+                    <div class="analysis-section">
+                        <h3>מבנה המשנה</h3>
+                        <p>המשנה מורכבת ממספר חלקים מרכזיים:</p>
+                        <ol>
+                            <li><strong>הצגת הכלל:</strong> "יציאות השבת שתים שהן ארבע"</li>
+                            <li><strong>הדגמה מפורטת:</strong> מקרים שונים של הוצאה והכנסה</li>
+                            <li><strong>קביעת האחריות:</strong> מי חייב ומי פטור בכל מקרה</li>
+                        </ol>
                     </div>
-                    <div class="analysis-box">
-                        <h3 class="analysis-title">ניתוח AI מתקדם ורב-ממדי</h3>
-                        <div class="analysis-section">
-                            <h3>1. מבנה לוגי ומשפטי</h3>
-                            <p>המשנה מציגה מבנה לוגי מורכב:</p>
-                            <ul>
-                                <li><strong>כלל כללי:</strong> "יציאות השבת שתים שהן ארבע"</li>
-                                <li><strong>פירוט מקרים:</strong> הדגמת הכלל דרך מקרים ספציפיים</li>
-                                <li><strong>קביעת אחריות:</strong> חיוב ופטור בכל מקרה</li>
-                            </ul>
-                            <p><strong>ניתוח AI:</strong> מבנה זה מדגים חשיבה משפטית מתקדמת, המשלבת עקרונות כלליים עם יישום מעשי, ומהווה בסיס למערכת משפטית מורכבת.</p>
-                        </div>
-                        <div class="analysis-section">
-                            <h3>2. תפיסת מרחב והגדרת רשויות</h3>
-                            <p>המשנה מגדירה שתי רשויות עיקריות: "בפנים" ו"בחוץ"</p>
-                            <p><strong>ניתוח AI:</strong> הגדרה זו משקפת:</p>
-                            <ol>
-                                <li>תפיסה מרחבית מתקדמת בהלכה היהודית</li>
-                                <li>יצירת גבולות הלכתיים במרחב הפיזי</li>
-                                <li>השפעת המיקום על ההגדרה ההלכתית של פעולות</li>
-                            </ol>
-                        </div>
-                        <div class="analysis-section">
-                            <h3>3. מושג ה"מלאכה" בשבת</h3>
-                            <p>המשנה מדגישה את חשיבות הפעולה המלאה (עקירה והנחה) בהגדרת מלאכת הוצאה:</p>
-                            <ul>
-                                <li>עקירה: הרמת החפץ ממקומו המקורי</li>
-                                <li>הנחה: הנחת החפץ במקום החדש</li>
-                            </ul>
-                            <p><strong>ניתוח AI:</strong> תפיסה זו מראה:</p>
-                            <ol>
-                                <li>הבנה מעמיקה של מהות המלאכה</li>
-                                <li>יצירת מערכת הלכתית מדויקת ומפורטת</li>
-                                <li>התייחסות לכוונה ולתוצאה בקביעת האיסור</li>
-                            </ol>
-                        </div>
-                    </div>
-                    <div class="analysis-box">
-                        <h3 class="analysis-title">תובנות נוספות ורב-תחומיות</h3>
-                        <div class="analysis-section">
-                            <h3>השלכות חברתיות ותרבותיות</h3>
-                            <p>המשנה משקפת מבנה חברתי ומעמדי:</p>
-                            <ul>
-                                <li>הבחנה בין "עני" ו"בעל הבית"</li>
-                                <li>השפעת המעמד החברתי על ההלכה</li>
-                                <li>תפיסת המרחב הפרטי והציבורי</li>
-                            </ul>
-                            <p><strong>ניתוח AI:</strong> משנה זו מספקת תובנות על המבנה החברתי בתקופת חז"ל ועל האינטראקציה בין קבוצות חברתיות שונות.</p>
-                        </div>
-                        <div class="analysis-section">
-                            <h3>פילוסופיה של החוק והאתיקה</h3>
-                            <p>המשנה מעלה שאלות פילוסופיות מעמיקות:</p>
-                            <ol>
-                                <li>מהי אחריות מוסרית וחוקית?</li>
-                                <li>כיצד מוגדרת פעולה שלמה?</li>
-                                <li>מהו היחס בין כוונה לתוצאה בקביעת אשמה?</li>
-                            </ol>
-                            <p><strong>ניתוח AI:</strong> הדיון במשנה זו מהווה בסיס לשיח פילוסופי רחב על טבע החוק, האחריות האישית, והיחס בין מעשה לתוצאה.</p>
-                        </div>
-                        <div class="interactive-element" id="simulation">
-                            לחץ כאן לצפייה בסימולציה אינטראקטיבית של מקרי המשנה
-                        </div>
+                    <div class="analysis-section">
+                        <h3>נקודות מפתח לעיון מעמיק</h3>
+                        <ul>
+                            <li>הגדרת רשויות: "בפנים" ו"בחוץ"</li>
+                            <li>חשיבות הפעולה המלאה: עקירה והנחה</li>
+                            <li>השפעת מיקום האדם על חיובו</li>
+                            <li>המושג של "שתים שהן ארבע"</li>
+                        </ul>
                     </div>
                 </div>
+                <div class="analysis-box">
+                    <h3 class="analysis-title">ניתוח AI מתקדם ורב-ממדי</h3>
+                    <div class="analysis-section">
+                        <h3>1. מבנה לוגי ומשפטי</h3>
+                        <p>המשנה מציגה מבנה לוגי מורכב:</p>
+                        <ul>
+                            <li><strong>כלל כללי:</strong> "יציאות השבת שתים שהן ארבע"</li>
+                            <li><strong>פירוט מקרים:</strong> הדגמת הכלל דרך מקרים ספציפיים</li>
+                            <li><strong>קביעת אחריות:</strong> חיוב ופטור בכל מקרה</li>
+                        </ul>
+                        <p><strong>ניתוח AI:</strong> מבנה זה מדגים חשיבה משפטית מתקדמת, המשלבת עקרונות כלליים עם יישום מעשי, ומהווה בסיס למערכת משפטית מורכבת.</p>
+                    </div>
+                    <div class="analysis-section">
+                        <h3>2. תפיסת מרחב והגדרת רשויות</h3>
+                        <p>המשנה מגדירה שתי רשויות עיקריות: "בפנים" ו"בחוץ"</p>
+                        <p><strong>ניתוח AI:</strong> הגדרה זו משקפת:</p>
+                        <ol>
+                            <li>תפיסה מרחבית מתקדמת בהלכה היהודית</li>
+                            <li>יצירת גבולות הלכתיים במרחב הפיזי</li>
+                            <li>השפעת המיקום על ההגדרה ההלכתית של פעולות</li>
+                        </ol>
+                    </div>
+                    <div class="analysis-section">
+                        <h3>3. מושג ה"מלאכה" בשבת</h3>
+                        <p>המשנה מדגישה את חשיבות הפעולה המלאה (עקירה והנחה) בהגדרת מלאכת הוצאה:</p>
+                        <ul>
+                            <li>עקירה: הרמת החפץ ממקומו המקורי</li>
+                            <li>הנחה: הנחת החפץ במקום החדש</li>
+                        </ul>
+                        <p><strong>ניתוח AI:</strong> תפיסה זו מראה:</p>
+                        <ol>
+                            <li>הבנה מעמיקה של מהות המלאכה</li>
+                            <li>יצירת מערכת הלכתית מדויקת ומפורטת</li>
+                            <li>התייחסות לכוונה ולתוצאה בקביעת האיסור</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="analysis-box">
+                    <h3 class="analysis-title">תובנות נוספות ורב-תחומיות</h3>
+                    <div class="analysis-section">
+                        <h3>השלכות חברתיות ותרבותיות</h3>
+                        <p>המשנה משקפת מבנה חברתי ומעמדי:</p>
+                        <ul>
+                            <li>הבחנה בין "עני" ו"בעל הבית"</li>
+                            <li>השפעת המעמד החברתי על ההלכה</li>
+                            <li>תפיסת המרחב הפרטי והציבורי</li>
+                        </ul>
+                        <p><strong>ניתוח AI:</strong> משנה זו מספקת תובנות על המבנה החברתי בתקופת חז"ל ועל האינטראקציה בין קבוצות חברתיות שונות.</p>
+                    </div>
+                    <div class="analysis-section">
+                        <h3>פילוסופיה של החוק והאתיקה</h3>
+                        <p>המשנה מעלה שאלות פילוסופיות מעמיקות:</p>
+                        <ol>
+                            <li>מהי אחריות מוסרית וחוקית?</li>
+                            <li>כיצד מוגדרת פעולה שלמה?</li>
+                            <li>מהו היחס בין כוונה לתוצאה בקביעת אשמה?</li>
+                        </ol>
+                        <p><strong>ניתוח AI:</strong> הדיון במשנה זו מהווה בסיס לשיח פילוסופי רחב על טבע החוק, האחריות האישית, והיחס בין מעשה לתוצאה.</p>
+                    </div>
+                    <div class="interactive-element" id="simulation">
+                        לחץ כאן לצפייה בסימולציה אינטראקטיבית של מקרי המשנה
+                    </div>
+                </div>
             </div>
-        </main>
-    
-        <div id="מסכת שבת דף ב עמוד ב.html" class="pulse">מעבר לדף ב עמוד ב</div>
-    
-        <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            // Tooltip functionality
-            const highlights = document.querySelectorAll('.highlight');
-            highlights.forEach(highlight => {
-                highlight.addEventListener('mouseover', (e) => {
-                    const tooltip = document.createElement('div');
-                    tooltip.classList.add('tooltip');
-                    tooltip.textContent = e.target.dataset.tooltip;
-                    document.body.appendChild(tooltip);
-                    
-                    const rect = e.target.getBoundingClientRect();
-                    tooltip.style.right = `${window.innerWidth - rect.right}px`;
-                    tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
-                });
+        </div>
+    </main>
+
+    <a href="מסכת שבת דף ב עמוד ב.html" id="next-page" class="navigation-button pulse">מעבר לדף ב עמוד ב</a>
+    <a href="חיפוש מסכת.html" id="prev-page" class="navigation-button pulse">חזרה לדף הראשי</a>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Tooltip functionality
+        const highlights = document.querySelectorAll('.highlight');
+        highlights.forEach(highlight => {
+            highlight.addEventListener('mouseover', (e) => {
+                const tooltip = document.createElement('div');
+                tooltip.classList.add('tooltip');
+                tooltip.textContent = e.target.dataset.tooltip;
+                document.body.appendChild(tooltip);
                 
-                highlight.addEventListener('mouseout', () => {
-                    const tooltip = document.querySelector('.tooltip');
-                    if (tooltip) {
-                        tooltip.remove();
-                    }
-                });
+                const rect = e.target.getBoundingClientRect();
+                tooltip.style.right = `${window.innerWidth - rect.right}px`;
+                tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
             });
             
-            // AI Assistant functionality
-            const aiAssistant = document.getElementById('ai-assistant');
-            aiAssistant.addEventListener('click', () => {
-                alert('ברוכים הבאים למערכת ה-AI המתקדמת לניתוח גמרא! כאן תוכלו לשאול שאלות מעמיקות על המשנה והגמרא ולקבל תשובות מפורטות. המערכת בשלבי פיתוח סופיים ותהיה זמינה בקרוב!');
-            });
-    
-            // Interactive simulation
-            const simulation = document.getElementById('simulation');
-            simulation.addEventListener('click', () => {
-                alert('הסימולציה האינטראקטיבית תציג את המקרים השונים המתוארים במשנה, תוך הדגשת ההבדלים בין המקרים והשלכותיהם ההלכתיות. תכונה זו תהיה זמינה בגרסה הבאה של המערכת!');
+            highlight.addEventListener('mouseout', () => {
+                const tooltip = document.querySelector('.tooltip');
+                if (tooltip) {
+                    tooltip.remove();
+                }
             });
         });
-        </script>
-    </body>
-    </html>
+
+        // Interactive simulation
+        const simulation = document.getElementById('simulation');
+        simulation.addEventListener('click', () => {
+            alert('הסימולציה האינטראקטיבית תציג את המקרים השונים המתוארים במשנה, תוך הדגשת ההבדלים בין המקרים והשלכותיהם ההלכתיות. תכונה זו תהיה זמינה בגרסה הבאה של המערכת!');
+        });
+    });
+    </script>
+</body>
+</html>
