@@ -132,24 +132,35 @@
         transition: all 0.3s ease;
     }
     
-    #ai-assistant {
+    .navigation-buttons {
         position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background: var(--primary-color);
-        color: #fff;
-        padding: 15px 25px;
-        border-radius: 50px;
-        cursor: pointer;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        transition: all 0.3s ease;
-        font-size: 1.1em;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
         z-index: 1000;
     }
     
-    #ai-assistant:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    .navigation-button {
+        background: var(--primary-color);
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        font-size: 1em;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .navigation-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
     
     .analysis-section {
@@ -208,6 +219,19 @@
     
     .pulse {
         animation: pulse 2s infinite;
+    }
+    
+    @media (max-width: 768px) {
+        .navigation-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navigation-button {
+            width: 80%;
+            margin-bottom: 10px;
+        }
     }
 </style>
 </head>
@@ -324,7 +348,10 @@
         </div>
     </main>
 
-    <div id="ai-assistant" class="pulse">שאל את ה-AI</div>
+    <div class="navigation-buttons">
+        <a href="מסכת שבת דף ג עמוד א.html" class="navigation-button pulse">מעבר לדף ג עמוד א</a>
+        <a href="מסכת שבת דף ב עמוד א.html" class="navigation-button pulse">חזרה לדף ב עמוד א</a>
+    </div>
 
     <script>
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -348,12 +375,6 @@
                     tooltip.remove();
                 }
             });
-        });
-        
-        // AI Assistant functionality
-        const aiAssistant = document.getElementById('ai-assistant');
-        aiAssistant.addEventListener('click', () => {
-            alert('ברוכים הבאים למערכת ה-AI המתקדמת לניתוח גמרא! כאן תוכלו לשאול שאלות מעמיקות על הסוגיה ולקבל תשובות מפורטות. המערכת בשלבי פיתוח סופיים ותהיה זמינה בקרוב!');
         });
 
         // Interactive concept map
